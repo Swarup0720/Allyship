@@ -71,18 +71,18 @@ export function Footer() {
                 <span className="text-xl font-extrabold text-white tracking-wider font-sans">
                   SOA UNIVERSITY
                 </span>
-                <span className="text-[11px] font-bold text-blue-400 tracking-widest uppercase -mt-0.5">
-                  ALLYSHIP 2025
+                <span className="text-[11px] font-bold text-cyan-400 tracking-widest font-mono uppercase -mt-0.5">
+                  ALLYSHIP++
                 </span>
               </div>
             </Link>
 
-            <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
+            <p className="text-sm font-semibold text-slate-300 max-w-sm leading-relaxed">
               “Bridging Industry. Academia. A Brighter Tomorrow.”
             </p>
 
             <p className="text-xs text-slate-400 max-w-md leading-relaxed">
-              A curated gathering of corporate leaders, HRs, and change-makers to discuss ideas, build partnerships, and create opportunities with SOA University.
+              Industry–Academia Leadership Conclave Series organised by Siksha ‘O’ Anusandhan, Bhubaneswar across Bengaluru, Hyderabad, Kolkata, Mumbai, and Chennai.
             </p>
 
             {/* Newsletter form */}

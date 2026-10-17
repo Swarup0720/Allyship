@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ALLYSHIP — Bridging Industry. Academia. A Brighter Tomorrow. | SOA University</title>
-  <meta name="description" content="A curated gathering of corporate leaders, HRs and change-makers to discuss ideas, build partnerships and create opportunities with SOA University.">
+  <title>ALLYSHIP++ — Bridging Industry. Academia. A Brighter Tomorrow. | SOA University</title>
+  <meta name="description" content="Siksha ‘O’ Anusandhan (SOA) Deemed to be University brings academia directly into India’s corporate boardrooms—uniting CHROs, talent heads, engineering leaders, and Olympic sports icons.">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Canvas Confetti CDN -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   
-  <!-- Google Fonts: Plus Jakarta Sans -->
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
@@ -22,6 +22,7 @@
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
             brand: {
@@ -49,11 +50,16 @@
     }
     .page-section.active {
       display: block;
-      animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.25s ease-in-out;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    .code-container {
+      background: #070d18;
+      color: #e4eaff;
+      font: 500 13px/1.7 'JetBrains Mono', monospace;
     }
   </style>
 </head>
@@ -78,7 +84,7 @@
               <span class="text-base sm:text-lg font-extrabold tracking-wider text-white uppercase font-sans">SOA</span>
               <span class="text-xs sm:text-sm font-semibold tracking-widest text-slate-300 uppercase font-sans">UNIVERSITY</span>
             </div>
-            <span class="text-[10px] tracking-wider text-blue-400 font-mono font-medium -mt-1 hidden sm:block">ALLYSHIP 2025</span>
+            <span class="text-[10px] tracking-wider text-cyan-400 font-mono font-bold -mt-1 hidden sm:block">ALLYSHIP++</span>
           </div>
         </a>
 
@@ -110,656 +116,610 @@
           </button>
         </nav>
 
-        <!-- CTA Button: Get Invited in bright blue -->
-        <div class="hidden sm:flex items-center gap-3">
-          <button type="button" onclick="openInviteModal()" class="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold tracking-wide shadow-md shadow-blue-600/30 transition-all flex items-center gap-1.5">
+        <!-- Right Side: Get Invited CTA -->
+        <div class="hidden sm:flex items-center gap-4">
+          <button type="button" onclick="openInviteModal()" class="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wide shadow-md shadow-blue-600/30 transition-all flex items-center gap-2">
             <span>Get Invited</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </div>
 
         <!-- Mobile Hamburger Button -->
-        <div class="flex lg:hidden items-center gap-2">
-          <button type="button" onclick="openInviteModal()" class="px-3.5 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-bold">
-            Get Invited
-          </button>
-          <button type="button" onclick="toggleMobileMenu()" class="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-          </button>
-        </div>
+        <button type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2 text-slate-300 hover:text-white rounded-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
       </div>
     </div>
 
-    <!-- Mobile Menu Drawer -->
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800 bg-[#070d18] px-4 py-5 space-y-2">
-      <button type="button" onclick="switchPage('home'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800">Home</button>
-      <button type="button" onclick="switchPage('about'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800">About</button>
-      <button type="button" onclick="switchPage('event'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800">Event</button>
-      <button type="button" onclick="switchPage('discover'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800">Discover SOA</button>
-      <button type="button" onclick="switchPage('collaborate'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800">Collaborate</button>
-      <button type="button" onclick="switchPage('impact'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800">Impact</button>
-      <button type="button" onclick="openInviteModal(); toggleMobileMenu()" class="w-full mt-2 py-3 rounded-lg bg-blue-600 text-white text-xs font-bold text-center">Request Invitation (Get Invited)</button>
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#070d18] border-b border-slate-800 px-4 pt-2 pb-6 space-y-2">
+      <button type="button" onclick="switchPage('home'); toggleMobileMenu()" class="block w-full text-left py-2 px-3 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800">Home</button>
+      <button type="button" onclick="switchPage('about'); toggleMobileMenu()" class="block w-full text-left py-2 px-3 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800">About</button>
+      <button type="button" onclick="switchPage('event'); toggleMobileMenu()" class="block w-full text-left py-2 px-3 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800">Event</button>
+      <button type="button" onclick="switchPage('discover'); toggleMobileMenu()" class="block w-full text-left py-2 px-3 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800">Discover SOA</button>
+      <button type="button" onclick="switchPage('collaborate'); toggleMobileMenu()" class="block w-full text-left py-2 px-3 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800">Collaborate</button>
+      <button type="button" onclick="switchPage('impact'); toggleMobileMenu()" class="block w-full text-left py-2 px-3 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800">Impact</button>
+      <div class="pt-2">
+        <button type="button" onclick="openInviteModal(); toggleMobileMenu()" class="w-full py-2.5 rounded-lg bg-blue-600 text-white font-bold text-xs text-center">Get Invited</button>
+      </div>
     </div>
   </header>
 
+  <!-- ================= MAIN CONTENT PAGES ================= -->
   <main class="flex-1">
 
-    <!-- ================= PAGE 1: HOME ================= -->
+    <!-- ================= PAGE 1: HOME (#p-home) ================= -->
     <div id="page-home" class="page-section active">
-      <!-- Dark Hero Section -->
-      <section class="relative bg-[#070d18] text-white pt-12 sm:pt-16 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800 overflow-hidden">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-7 space-y-5">
-            <span class="inline-block px-3.5 py-1 rounded-full border border-slate-700 bg-slate-900/80 text-slate-300 text-[11px] font-mono font-bold tracking-widest uppercase">
-              A PRIVATE INVITATION EVENT
-            </span>
-
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white font-sans">
-              ALLY<span class="text-blue-500">SHIP</span>
+      <!-- Hero -->
+      <section class="relative bg-[#070d18] text-white pt-12 sm:pt-16 lg:pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-slate-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-block">
+              <span class="px-3.5 py-1.5 rounded-full border border-blue-500/30 bg-blue-950/60 text-blue-400 text-[11px] font-mono font-bold tracking-widest uppercase">
+                Industry–Academia Leadership Conclave Series
+              </span>
+            </div>
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-sans text-white">
+              ALLY<span class="text-blue-500">SHIP</span><span class="text-cyan-400 font-mono">++</span>
             </h1>
-
-            <p class="text-xl sm:text-2xl font-bold tracking-tight text-slate-100">
+            <p className="text-xl sm:text-2xl font-bold tracking-tight text-slate-100">
               Bridging Industry. Academia. A Brighter Tomorrow.
             </p>
-
             <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
-              A curated gathering of corporate leaders, HRs and change-makers to discuss ideas, build partnerships and create opportunities with SOA University.
+              Siksha ‘O’ Anusandhan (SOA) Deemed to be University takes academia directly into India’s premier corporate boardrooms—uniting CHROs, Global Talent Heads, engineering leaders, and Olympic sports icons to build inclusive, future-ready leadership ecosystems.
             </p>
-
-            <div class="flex flex-wrap items-center gap-6 text-xs text-slate-300 font-medium pt-1">
-              <div class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                <span class="font-semibold text-white">10 Jan 2025</span>
+            <div class="flex flex-wrap items-center gap-3 text-xs text-slate-300 font-medium pt-1">
+              <div class="bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-700/80">
+                Bengaluru · Hyderabad (1.0 & 2.0) · Kolkata · Mumbai · Chennai
               </div>
-              <div class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-                <span>Bhubaneswar, India</span>
-              </div>
+              <span class="text-slate-400">| Organised by Siksha ‘O’ Anusandhan, Bhubaneswar</span>
             </div>
-
             <div class="flex flex-wrap items-center gap-4 pt-3">
-              <button type="button" onclick="openVideoModal()" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs tracking-wide transition-all flex items-center gap-2">
-                <div class="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-white">
-                  <svg class="w-3 h-3 fill-white ml-0.5" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                </div>
-                <span>Watch the Video</span>
+              <button type="button" onclick="openVideoModal('8wSGKsWyQwk')" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs tracking-wide transition-all flex items-center gap-2">
+                <span>Watch Conclave Highlights</span>
               </button>
-
-              <button type="button" onclick="openInviteModal()" class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wide transition-all shadow-md shadow-blue-600/30 flex items-center gap-2">
-                <span>Request Invitation</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              <button type="button" onclick="openInviteModal()" class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wide shadow-md shadow-blue-600/30 transition-all flex items-center gap-2">
+                <span>Request Executive Invitation</span>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
             </div>
           </div>
-
-          <!-- Hero Right Stage Photograph -->
-          <div class="lg:col-span-5 flex justify-center">
-            <div class="relative w-full max-w-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-900 group">
-              <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=80" alt="Allyship Stage" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="lg:col-span-5 relative flex justify-center">
+            <div class="relative w-full max-w-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=80" alt="Allyship++ Stage" class="w-full h-80 object-cover">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-end p-6">
-                <span class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase">SOA University Stage</span>
-                <span class="text-lg font-bold text-white mt-1">Ideas. People. Partnerships.</span>
-                <span class="text-xs text-slate-300 mt-0.5">For a Better Tomorrow</span>
+                <span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider">SOA University Allyship++ Conclave</span>
+                <span class="text-lg font-bold text-white mt-1">Boardroom to Arena. Ideas to Impact.</span>
+                <p class="text-xs text-slate-300 mt-1">Connecting Corporate Leaders with Academic Pioneers</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Horizontal Statistics Panel -->
+      <!-- Stats Bar -->
       <section class="bg-[#0b1120] border-b border-slate-800 text-white py-6 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div class="p-2">
-            <div class="text-3xl font-extrabold text-white">100+</div>
-            <div class="text-xs text-slate-400 font-medium mt-1">Corporate Leaders</div>
+          <div class="p-3">
+            <div class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight"><b class="text-blue-400 font-extrabold">6</b></div>
+            <div class="text-xs text-slate-400 font-medium mt-1">Conclaves across 5 Metro Hubs</div>
           </div>
-          <div class="p-2">
-            <div class="text-3xl font-extrabold text-white">25+</div>
-            <div class="text-xs text-slate-400 font-medium mt-1">Industries</div>
+          <div class="p-3">
+            <div class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight"><b class="text-blue-400 font-extrabold">60–70+</b></div>
+            <div class="text-xs text-slate-400 font-medium mt-1">Senior Leaders per Chapter</div>
           </div>
-          <div class="p-2">
-            <div class="text-3xl font-extrabold text-white">50+</div>
-            <div class="text-xs text-slate-400 font-medium mt-1">SOA Innovators</div>
+          <div class="p-3">
+            <div class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight"><b class="text-blue-400 font-extrabold">2.0</b></div>
+            <div class="text-xs text-slate-400 font-medium mt-1">2026 Edition (Hyderabad & Chennai)</div>
           </div>
-          <div class="p-2">
-            <div class="text-3xl font-extrabold text-white font-mono">∞</div>
-            <div class="text-xs text-slate-400 font-medium mt-1">Possibilities</div>
+          <div class="p-3">
+            <div class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight"><b class="text-blue-400 font-extrabold">40+</b></div>
+            <div class="text-xs text-slate-400 font-medium mt-1">CXO Panelists & Sports Legends</div>
           </div>
         </div>
       </section>
 
       <!-- A Platform for Real Impact -->
       <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        <div class="text-center max-w-3xl mx-auto mb-12 space-y-2">
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-blue-600 block">The Allyship++ Architecture</span>
           <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">A Platform for Real Impact</h2>
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Allyship is more than an event. It's a movement to connect industry leaders with the talent, research and innovation ecosystem at SOA University.
+            Allyship++ is more than an event. It is an operational bridge taking academia directly into corporate capitals to co-create agile talent pipelines, applied R&D labs, and inclusive workplace cultures.
           </p>
         </div>
-
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:border-blue-300 transition-all">
-            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            </div>
-            <h3 class="text-base font-bold text-slate-900">Exchange Ideas</h3>
-            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Meaningful discussions on real industry challenges</p>
-          </div>
-
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:border-blue-300 transition-all">
-            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-            </div>
-            <h3 class="text-base font-bold text-slate-900">Build Partnerships</h3>
-            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Research, projects and talent collaborations</p>
-          </div>
-
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:border-blue-300 transition-all">
-            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
-            </div>
-            <h3 class="text-base font-bold text-slate-900">Shape Opportunities</h3>
-            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Mentorship, internships and industry engagement</p>
-          </div>
-
-          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:border-blue-300 transition-all">
-            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            </div>
-            <h3 class="text-base font-bold text-slate-900">Drive Impact</h3>
-            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Solutions for a stronger, more innovative future</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- A Message from Hota Sir -->
-      <section class="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 items-center">
-          <div class="md:col-span-5 relative h-72 sm:h-96 w-full bg-slate-900">
-            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="Raj Kumar Hota speaking at podium" class="w-full h-full object-cover object-top">
-          </div>
-          <div class="md:col-span-7 p-8 sm:p-12 space-y-6">
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">A Message from Hota Sir</h2>
-            <blockquote class="text-sm sm:text-base text-slate-700 italic leading-relaxed border-l-4 border-blue-600 pl-4">
-              “Allyship is about people coming together with a shared purpose — to create opportunities, solve real problems and build a better tomorrow with the bright minds at SOA.”
-            </blockquote>
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between">
             <div>
-              <div class="font-serif italic text-2xl text-blue-600 font-bold tracking-wider">Hota</div>
-              <div class="text-sm font-bold text-slate-900 mt-1">Dr. Raj Kumar Hota</div>
-              <div class="text-xs text-slate-500">[Founder / Chancellor, SOA University]</div>
+              <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 text-xl font-bold">⇄</div>
+              <h3 class="text-base font-bold text-slate-900">Exchange Ideas</h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Candid CXO panels and fireside chats addressing urgent workplace realities—from psychological safety and hybrid engineering cultures to Gen-Z career aspirations.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 text-xl font-bold">⚭</div>
+              <h3 class="text-base font-bold text-slate-900">Build Partnerships</h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Direct pathways into SOA’s research ecosystem, generating joint Centres of Excellence with leaders like Tech Mahindra and L&T Technology Services, alongside sponsored consultancy.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 text-xl font-bold">◎</div>
+              <h3 class="text-base font-bold text-slate-900">Shape Opportunities</h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                A continuous feedback loop where boardroom expectations directly inform SOA’s flexible curriculum design, technical skill labs, and campus-to-corporate readiness.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 text-xl font-bold">✦</div>
+              <h3 class="text-base font-bold text-slate-900">Drive Impact</h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Operationalizing allyship not as a standalone HR initiative, but as an everyday leadership responsibility that fuels innovation, institutional trust, and sustainable growth.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Event Highlights -->
-      <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        <div class="flex items-end justify-between mb-8">
-          <div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Event Highlights</h2>
-            <p class="text-xs text-slate-500 mt-1">What leaders and innovators experience at ALLYSHIP.</p>
+      <!-- Vision from Leadership -->
+      <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div class="bg-white rounded-3xl border border-slate-200/90 shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 items-center">
+          <div class="md:col-span-5 relative h-80 sm:h-96 w-full bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="Prof. Raj Kumar Hota" class="w-full h-full object-cover object-top">
           </div>
-          <button type="button" onclick="switchPage('event')" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1">
-            <span>View Full Agenda</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-          </button>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm group">
-            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt="Leadership Discussions" class="h-44 w-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="p-4 space-y-1">
-              <h3 class="text-sm font-bold text-slate-900">Leadership Discussions</h3>
-              <p class="text-xs text-slate-500 leading-relaxed">Keynote sessions and roundtable conversations</p>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm group">
-            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="Innovation Showcase" class="h-44 w-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="p-4 space-y-1">
-              <h3 class="text-sm font-bold text-slate-900">Innovation Showcase</h3>
-              <p class="text-xs text-slate-500 leading-relaxed">Student projects and research demonstrations</p>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm group">
-            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80" alt="Networking" class="h-44 w-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="p-4 space-y-1">
-              <h3 class="text-sm font-bold text-slate-900">Networking</h3>
-              <p class="text-xs text-slate-500 leading-relaxed">Curated one-on-one and group interactions</p>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm group">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Collaboration Opportunities" class="h-44 w-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="p-4 space-y-1">
-              <h3 class="text-sm font-bold text-slate-900">Collaboration Opportunities</h3>
-              <p class="text-xs text-slate-500 leading-relaxed">Explore research, mentorship and industry projects</p>
+          <div class="md:col-span-7 p-8 sm:p-12 space-y-5">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 block">Executive Stewardship</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Vision from the Conclave Leadership</h2>
+            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+              Under the academic stewardship of Vice-Chancellor Prof. Pradipta Kumar Nanda and Pro-Vice Chancellor Prof. Prasanta Kumar Patra, Siksha ‘O’ Anusandhan has positioned industry-academia collaboration as the cornerstone of future-ready workplaces.
+            </p>
+            <blockquote class="text-xs sm:text-sm text-slate-800 italic leading-relaxed border-l-4 border-blue-600 pl-4 bg-slate-50 py-3 rounded-r-xl">
+              “As Convener of every Allyship++ chapter since its inception in 2024, Prof. (Dr.) Raj Kumar Hota has championed the creation of empathetic, inclusive, and agile leadership ecosystems aligned with Gen-Z aspirations—bringing Fortune 500 CHROs, Global Capability Heads, IIT faculty, and Olympic legends onto a single collaborative stage across five cities.”
+            </blockquote>
+            <div class="pt-2 border-t border-slate-100">
+              <div class="font-serif italic text-2xl text-blue-600 font-bold tracking-wider">Raj Kumar Hota</div>
+              <div class="text-sm font-bold text-slate-900 mt-1">Prof. (Dr.) Raj Kumar Hota</div>
+              <div class="text-xs text-slate-500">Dean, Corporate Relations, Placement, Career Development & Industry Collaboration, SOA · Convener, Allyship++</div>
             </div>
           </div>
         </div>
       </section>
     </div>
 
-    <!-- ================= PAGE 2: ABOUT US (CRITICAL CHANGES) ================= -->
+    <!-- ================= PAGE 2: ABOUT (#p-about) ================= -->
     <div id="page-about" class="page-section">
-      <section class="bg-[#070d18] text-white pt-14 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800 text-center">
-        <div class="max-w-4xl mx-auto space-y-4">
-          <span class="px-3.5 py-1 rounded-full border border-slate-700 bg-slate-900/80 text-blue-400 text-[11px] font-mono font-bold tracking-widest uppercase">
-            ABOUT ALLYSHIP & SOA UNIVERSITY
-          </span>
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">
-            Bridging Industry. Academia. <br><span class="text-blue-500">A Brighter Tomorrow.</span>
-          </h1>
-          <p class="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            ALLYSHIP is a joint initiative founded at Siksha 'O' Anusandhan (SOA University) to unite visionary corporate leaders with forward-looking educators, scientists, and student researchers.
+      <section class="relative bg-[#070d18] text-white pt-14 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
+        <div class="max-w-4xl mx-auto text-center space-y-4">
+          <span class="px-3.5 py-1.5 rounded-full border border-blue-500/30 bg-blue-950/60 text-blue-400 text-[11px] font-mono font-bold tracking-widest uppercase">About the Initiative</span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-sans">Why “Allyship<span class="text-cyan-400 font-mono">++</span>”?</h1>
+          <p class="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl mx-auto font-medium">
+            Allyship is the deliberate, ongoing practice in which leaders with institutional power work in active solidarity with emerging and underrepresented talent. The “++” signifies continuous evolution—incrementing inclusion day after day.
           </p>
         </div>
       </section>
 
-      <!-- Institutional Foundation -->
+      <!-- Narrative & Monospace Code Visual -->
       <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          <div class="lg:col-span-6 space-y-4">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 block">The Genesis of Allyship</span>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Why Industry and Academia Must Build Together</h2>
-            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              In an era of rapid technological transformation, the traditional boundaries between academic study and corporate execution can no longer operate in isolation. Industry requires agile research talent and sustainable innovation; universities require real-world validation and career pathways.
+          <div class="lg:col-span-7 space-y-5">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 block">The Genesis of Allyship++</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Industry and Academia, in the Same Room</h2>
+            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+              For decades, university placement in India operated as a yearly, one-way transaction: institutions waited on campus for recruiters to arrive. Allyship++ reverses that equation. Siksha ‘O’ Anusandhan travels directly to the corporate boardrooms of Bengaluru, Hyderabad, Kolkata, Mumbai, and Chennai to listen first. While a diversity policy states what an organisation intends on paper, allyship determines what happens on an ordinary Tuesday—who receives credit in a meeting, who is sponsored for a stretch project, and who speaks up when a boundary is crossed.
             </p>
-            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              SOA University—consistently ranked among the top institutions in India (NAAC A++ accredited)—serves as the fertile ground for ALLYSHIP, providing advanced labs, 30,000+ students, and an ecosystem primed for collaborative discovery.
+            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+              The “++” carries a dual meaning rooted in engineering and organizational leadership: in programming, the <code class="text-blue-600 bg-blue-50 px-1 py-0.5 rounded font-mono font-semibold">++</code> operator increments a value by one step at a time, and marks the historic leap from procedural C to object-oriented C++. Applied to corporate-academic leadership, Allyship++ represents a continuous, compounding upgrade—expanding traditional DEI to encompass generational allyship for Gen-Z professionals, psychological safety for junior analysts, and co-created curricula between universities and employers.
+            </p>
+            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+              Uniquely, every Allyship++ chapter pairs corporate HR and technology panels with India’s sporting legends—from Olympic gold medalist Gurbux Singh and athletics pioneer Anju Bobby George to Test cricketers Arshad Ayub and Nilesh Kulkarni, and Paris Olympics sprint coach Premanand J.—proving that the mentorship, discipline, and trust that win medals in the arena are identical to the allyship that builds high-performing teams in the boardroom.
             </p>
           </div>
-
-          <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-1">
-              <h3 class="text-sm font-bold text-slate-900">Collaborative Excellence</h3>
-              <p class="text-xs text-slate-500">Creating high-trust institutional bridges between corporate pioneers and university research laboratories.</p>
-            </div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-1">
-              <h3 class="text-sm font-bold text-slate-900">Applied Innovation</h3>
-              <p class="text-xs text-slate-500">Channeling student and faculty research toward urgent industrial, civic, and societal challenges.</p>
-            </div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-1">
-              <h3 class="text-sm font-bold text-slate-900">Talent Empowerment</h3>
-              <p class="text-xs text-slate-500">Preparing engineering, medical, management, and scientific minds through direct executive mentorship.</p>
-            </div>
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-1">
-              <h3 class="text-sm font-bold text-slate-900">Sustainable Impact</h3>
-              <p class="text-xs text-slate-500">Championing clean technologies, healthcare access, and inclusive regional development.</p>
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl code-container border border-slate-800 shadow-2xl p-6 space-y-3">
+              <div class="text-slate-500 italic">// Legacy Industry-Academia Model (Transactional)</div>
+              <div><span class="text-red-400">placement</span>.<span class="text-yellow-300">mode</span> = <span class="text-green-300">"annual_one_way_recruitment"</span>;</div>
+              <div><span class="text-red-400">inclusion</span>.<span class="text-yellow-300">scope</span> = <span class="text-green-300">"policy_statement_only"</span>;</div>
+              <div class="pt-2 text-slate-500 italic">// The SOA Allyship++ Upgrade (Co-Created & Continuous)</div>
+              <div><span class="text-purple-400">while</span> (<span class="text-blue-400">workplace</span>.<span class="text-yellow-300">evolves</span>()) {</div>
+              <div class="pl-4"><span class="text-cyan-400 font-bold">allyship++</span>; <span class="text-slate-500 italic">// Continuous daily increment</span></div>
+              <div class="pl-4"><span class="text-blue-400">boardroom</span>.<span class="text-yellow-300">listenFirst</span>(["Bengaluru", "Hyderabad", "Kolkata", "Mumbai", "Chennai"]);</div>
+              <div class="pl-4"><span class="text-blue-400">leadership</span>.<span class="text-yellow-300">embed</span>("Psychological_Safety", "GenZ_Mentorship", "Sponsor_Talent");</div>
+              <div class="pl-4"><span class="text-blue-400">curriculum</span>.<span class="text-yellow-300">syncWith</span>(<span class="text-blue-400">industry</span>.<span class="text-yellow-300">realWorldChallenges</span>);</div>
+              <div>}</div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- LEADERSHIP SECTION: EXACTLY TWO PROFILES SIDE BY SIDE -->
+      <!-- 7 Roles of Workplace Allyship -->
+      <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-slate-200">
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-blue-600 block">Behavioral Framework & Governance</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">From Policy to Practice: The 7 Roles of Workplace Allyship</h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Grounded in Karen Catlin’s Better Allies framework and insights from 40+ CXO panelists across SOA’s conclaves.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+            <span class="text-[10px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">1. Sponsor</span>
+            <h3 class="text-sm font-bold text-slate-900">Institutional Clout</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Opening doors behind closed doors—recommending emerging talent for stretch projects, panels, and promotions with concrete performance evidence.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+            <span class="text-[10px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">2. Champion</span>
+            <h3 class="text-sm font-bold text-slate-900">Public Advocacy</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Publicly endorsing junior colleagues and Gen-Z professionals in high-visibility leadership forums, town halls, and client reviews.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+            <span class="text-[10px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">3. Amplifier</span>
+            <h3 class="text-sm font-bold text-slate-900">Credit Attribution</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Crediting ideas out loud—when a colleague's idea is overlooked in a meeting, bringing it back to the table and explicitly naming who originated it.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+            <span class="text-[10px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">4. Advocate</span>
+            <h3 class="text-sm font-bold text-slate-900">Structural Reform</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Using positional influence to widen access, audit hiring and performance evaluation rubrics, and remove systemic bias.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+            <span class="text-[10px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">5. Scholar</span>
+            <h3 class="text-sm font-bold text-slate-900">Continuous Learning</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Doing independent learning on workplace barriers—listening first in ERGs so junior or underrepresented colleagues do not bear the teaching burden.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+            <span class="text-[10px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">6. Upstander</span>
+            <h3 class="text-sm font-bold text-slate-900">Real-Time Intervention</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Speaking up calmly in the moment when a comment or action crosses a line, backed by institutional safety, and checking in privately afterward.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+            <span class="text-[10px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">7. Confidante</span>
+            <h3 class="text-sm font-bold text-slate-900">Psychological Safety</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Building team cultures where colleagues feel safe to voice concerns, admit knowledge gaps, and seek mentorship without retaliation fear.</p>
+          </div>
+          <div class="bg-gradient-to-br from-blue-900 to-slate-900 text-white p-6 rounded-2xl border border-blue-700 shadow-md space-y-2">
+            <span class="text-[10px] font-mono font-bold text-cyan-300 bg-cyan-900/60 px-2 py-0.5 rounded">8. 3-Question Test</span>
+            <h3 class="text-sm font-bold text-white">Authenticity Litmus Test</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">1) Does it cost the leader comfort or capital? 2) Does it tangibly alter career outcomes? 3) Would it still happen behind closed doors?</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Institutional Leadership: Exactly 2 Profiles -->
       <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-slate-200">
         <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
           <span class="text-xs font-bold uppercase tracking-wider text-blue-600 block">Executive Leadership</span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Institutional Leadership</h2>
-          <p class="text-xs sm:text-sm text-slate-500">Guiding SOA University and the ALLYSHIP initiative toward shared industrial and academic horizons.</p>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Institutional Leadership</h2>
+          <p class="text-xs sm:text-sm text-slate-500">Guiding SOA University and the Allyship++ movement.</p>
         </div>
-
-        <!-- EXACTLY TWO PROFILES: Side by side on desktop, stacked on mobile -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <!-- Profile 1: Vice Chancellor, SOA University -->
           <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
-            <div class="h-72 w-full overflow-hidden bg-slate-900">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Vice Chancellor, SOA University" class="w-full h-full object-cover object-top">
+            <div class="h-64 sm:h-72 w-full overflow-hidden bg-slate-900 relative">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Prof. Pradipta Kumar Nanda" class="w-full h-full object-cover object-top">
             </div>
-            <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
+            <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-3">
               <div>
                 <h3 class="text-xl font-bold text-slate-900">Prof. (Dr.) Pradipta Kumar Nanda</h3>
-                <p class="text-xs font-semibold text-blue-600 mt-1">Vice Chancellor, SOA University</p>
-                <p class="text-xs text-slate-600 mt-3 leading-relaxed">
-                  Distinguished academician and researcher guiding SOA University's institutional vision, multidisciplinary research excellence, and national accreditation standards across 25+ academic schools.
-                </p>
+                <p class="text-xs font-semibold text-blue-600 mt-0.5">Vice Chancellor, Siksha ‘O’ Anusandhan (Deemed to be University)</p>
+                <p class="text-xs text-slate-600 mt-3 leading-relaxed">Distinguished academician providing executive governance for SOA’s national expansion, NIRF Top-15 standing, NAAC A++ accreditation, and multi-faculty research excellence across engineering, medicine, and sciences.</p>
               </div>
-              <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
-                <span>Executive Office</span>
-                <span class="font-semibold text-blue-600">SOA University</span>
-              </div>
+              <div class="pt-3 border-t border-slate-100 text-xs text-slate-400">Executive Office · SOA University</div>
             </div>
           </div>
-
-          <!-- Profile 2: Raj Kumar Hota -->
           <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
-            <div class="h-72 w-full overflow-hidden bg-slate-900">
-              <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="Raj Kumar Hota" class="w-full h-full object-cover object-top">
+            <div class="h-64 sm:h-72 w-full overflow-hidden bg-slate-900 relative">
+              <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="Prof. Raj Kumar Hota" class="w-full h-full object-cover object-top">
             </div>
-            <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
+            <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-3">
               <div>
-                <h3 class="text-xl font-bold text-slate-900">Raj Kumar Hota</h3>
-                <p class="text-xs font-semibold text-blue-600 mt-1">Leadership & Strategic Advisor, Chancellor's Office</p>
-                <p class="text-xs text-slate-600 mt-3 leading-relaxed">
-                  Pioneering strategist championing corporate partnership networks, industry challenge labs, and cross-sector innovation for SOA University and the ALLYSHIP movement.
-                </p>
+                <h3 class="text-xl font-bold text-slate-900">Prof. (Dr.) Raj Kumar Hota</h3>
+                <p class="text-xs font-semibold text-blue-600 mt-0.5">Dean, Corporate Relations, Placement, Career Development & Industry Collaboration · Convener, Allyship++</p>
+                <p class="text-xs text-slate-600 mt-3 leading-relaxed">Pioneering strategist who conceived and convened all six Allyship++ chapters across Bengaluru, Hyderabad, Kolkata, Mumbai, and Chennai—bridging corporate boardrooms, IIT academicians, and sports icons with SOA’s graduate talent.</p>
               </div>
-              <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
-                <span>Strategic Advisory</span>
-                <span class="font-semibold text-blue-600">SOA University</span>
-              </div>
+              <div class="pt-3 border-t border-slate-100 text-xs text-slate-400">Corporate Relations · SOA University</div>
             </div>
           </div>
         </div>
       </section>
     </div>
 
-    <!-- ================= PAGE 3: EVENT DETAILS ================= -->
+    <!-- ================= PAGE 3: EVENT (#p-event) ================= -->
     <div id="page-event" class="page-section">
       <section class="relative bg-[#070d18] text-white pt-12 sm:pt-16 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div class="lg:col-span-7 space-y-5">
-            <span class="text-[11px] font-mono font-bold tracking-widest text-slate-400 uppercase">JOIN THE CONVERSATION</span>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">Event Details</h1>
+            <span class="px-3.5 py-1.5 rounded-full border border-blue-500/30 bg-blue-950/60 text-blue-400 text-[11px] font-mono font-bold tracking-widest uppercase">Master Conclave Series · 2024–2026</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-sans">Allyship<span class="text-cyan-400 font-mono">++</span> Conclaves</h1>
+            <p class="text-lg sm:text-xl font-bold text-slate-200">6 Conclaves Across 5 Metropolitan Capitals</p>
             <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
-              An exclusive gathering to discuss ideas, share perspectives and create meaningful partnerships.
+              From Bengaluru and Hyderabad to Kolkata, Mumbai, and Chennai, Siksha ‘O’ Anusandhan has built a continuous national bridge connecting over 400 corporate CXOs, Olympic medalists, and academic leaders.
             </p>
-            <div class="space-y-1.5 text-xs text-slate-300">
-              <p>📅 <strong class="text-white">10 January 2025</strong> | 9:00 AM – 6:00 PM</p>
-              <p>📍 <strong class="text-white">SOA University</strong>, Bhubaneswar, India</p>
-            </div>
             <div class="pt-2">
-              <button type="button" onclick="openInviteModal()" class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wide">
-                Request Invitation
+              <button type="button" onclick="openInviteModal()" class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wide shadow-md shadow-blue-600/30 transition-all flex items-center gap-2">
+                <span>Request Executive Invitation</span>
               </button>
             </div>
           </div>
-          <div class="lg:col-span-5 flex justify-center">
-            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" alt="Conclave Hall" class="rounded-2xl border border-slate-700 shadow-xl max-w-md w-full h-64 object-cover">
+          <div class="lg:col-span-5 relative flex justify-center">
+            <div class="relative w-full max-w-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=80" alt="Auditorium" class="w-full h-72 object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-end p-5">
+                <span class="text-xs font-mono font-bold text-cyan-400 uppercase">Editions 1.0 & 2.0</span>
+                <span class="text-sm font-bold text-white mt-0.5">Bridging Industry, Sports & Academia</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Event Agenda Timeline matching Reference -->
-      <section class="py-14 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
-        <div class="mb-8">
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Event Agenda</h2>
-          <p class="text-xs text-slate-500 mt-1">A day of insightful discussions, engaging sessions and valuable networking opportunities.</p>
+      <!-- All 6 Chapters Section -->
+      <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full space-y-8">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl font-extrabold text-slate-900">The Complete Six-Chapter Master Record</h2>
+          <span class="text-xs font-mono text-slate-500">2024–2026 Archive</span>
         </div>
 
-        <div class="space-y-4">
-          <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
-              <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 text-xs font-mono font-bold whitespace-nowrap">09:00 - 10:00 AM</span>
-              <div>
-                <h3 class="text-sm font-bold text-slate-900">Registration & Welcome Tea</h3>
-                <p class="text-xs text-slate-500">Meet fellow leaders and explore the innovation showcase.</p>
-              </div>
-            </div>
-            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=300&q=80" alt="Welcome" class="w-24 h-14 rounded-lg object-cover">
-          </div>
-
-          <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
-              <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 text-xs font-mono font-bold whitespace-nowrap">10:00 - 11:00 AM</span>
-              <div>
-                <h3 class="text-sm font-bold text-slate-900">Inaugural Session</h3>
-                <p class="text-xs text-slate-500">Welcome address by Hota Sir and special guests.</p>
-              </div>
-            </div>
-            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=300&q=80" alt="Inauguration" class="w-24 h-14 rounded-lg object-cover">
-          </div>
-
-          <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
-              <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 text-xs font-mono font-bold whitespace-nowrap">11:30 - 01:00 PM</span>
-              <div>
-                <h3 class="text-sm font-bold text-slate-900">Panel Discussion</h3>
-                <p class="text-xs text-slate-500">Industry-Academia Collaboration: Opportunities and Challenges</p>
-              </div>
-            </div>
-            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=300&q=80" alt="Panel" class="w-24 h-14 rounded-lg object-cover">
-          </div>
-
-          <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
-              <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 text-xs font-mono font-bold whitespace-nowrap">02:00 - 03:30 PM</span>
-              <div>
-                <h3 class="text-sm font-bold text-slate-900">Breakout Sessions</h3>
-                <p class="text-xs text-slate-500">Focused discussions on key themes (AI, Sustainability, Healthcare, etc.)</p>
-              </div>
-            </div>
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=300&q=80" alt="Breakouts" class="w-24 h-14 rounded-lg object-cover">
-          </div>
-
-          <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
-              <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 text-xs font-mono font-bold whitespace-nowrap">04:00 - 05:00 PM</span>
-              <div>
-                <h3 class="text-sm font-bold text-slate-900">Innovation Showcase</h3>
-                <p class="text-xs text-slate-500">Live demonstrations of student projects and research.</p>
-              </div>
-            </div>
-            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=300&q=80" alt="Showcase" class="w-24 h-14 rounded-lg object-cover">
-          </div>
-
-          <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
-              <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 text-xs font-mono font-bold whitespace-nowrap">05:00 - 06:00 PM</span>
-              <div>
-                <h3 class="text-sm font-bold text-slate-900">Networking & High Tea</h3>
-                <p class="text-xs text-slate-500">Curated networking with corporate leaders, faculty and students.</p>
-              </div>
-            </div>
-            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=300&q=80" alt="Networking" class="w-24 h-14 rounded-lg object-cover">
-          </div>
+        <div id="conclaves-container" class="space-y-6">
+          <!-- Dynamically populated from JS array C below -->
         </div>
       </section>
     </div>
 
-    <!-- ================= PAGE 4: DISCOVER SOA ================= -->
+    <!-- ================= PAGE 4: DISCOVER SOA (#p-discover) ================= -->
     <div id="page-discover" class="page-section">
       <section class="relative bg-[#070d18] text-white pt-12 sm:pt-16 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-7 space-y-4">
-            <span class="text-[11px] font-mono font-bold tracking-widest text-slate-400 uppercase">MORE THAN A UNIVERSITY</span>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">Discover SOA</h1>
-            <p class="text-lg font-bold text-slate-100">A hub of talent, research, innovation and impact.</p>
-            <p class="text-sm text-slate-300 leading-relaxed max-w-xl">
-              Explore how SOA is shaping future-ready talent and real-world solutions through world-edge research, state-of-the-art infrastructure and a vibrant innovation ecosystem.
+          <div class="lg:col-span-7 space-y-5">
+            <span class="text-[11px] font-mono font-bold tracking-widest text-blue-400 uppercase">DEEMED TO BE UNIVERSITY · BHUBANESWAR</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-sans">Discover <span class="text-blue-500">SOA</span></h1>
+            <p class="text-lg sm:text-xl font-bold text-slate-100">Ranked 15th Nationally. A Premier Multi-Faculty Research University.</p>
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
+              Siksha ‘O’ Anusandhan is recognized among India’s top four institutions in the Times Higher Education World Reputation Rankings 2025—fostering 30,000+ students, 38 Stanford Top 2% scientists, and industry-embedded Centres of Excellence.
             </p>
-            <div class="pt-2">
-              <button type="button" onclick="openTourModal()" class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wide">
-                Take a Virtual Tour
+            <div class="pt-2 flex items-center gap-3">
+              <button type="button" onclick="openVideoModal('8wSGKsWyQwk')" class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center gap-2">
+                <span>Take a Virtual Tour</span>
               </button>
             </div>
           </div>
-          <div class="lg:col-span-5 flex justify-center">
-            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80" alt="SOA Dome" class="rounded-2xl border border-slate-700 shadow-xl max-w-md w-full h-64 object-cover">
-          </div>
-        </div>
-      </section>
-
-      <!-- University Statistics Bar -->
-      <section class="bg-white border-b border-slate-200 py-6 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
-          <div><div class="text-3xl font-extrabold text-blue-600">25+</div><div class="text-xs text-slate-500 font-medium">Schools & Departments</div></div>
-          <div><div class="text-3xl font-extrabold text-blue-600">30,000+</div><div class="text-xs text-slate-500 font-medium">Students</div></div>
-          <div><div class="text-3xl font-extrabold text-blue-600">1,200+</div><div class="text-xs text-slate-500 font-medium">Faculty Members</div></div>
-          <div><div class="text-3xl font-extrabold text-blue-600">150+</div><div class="text-xs text-slate-500 font-medium">Research Projects</div></div>
-          <div><div class="text-3xl font-extrabold text-blue-600">50+</div><div class="text-xs text-slate-500 font-medium">Global Collaborations</div></div>
-        </div>
-      </section>
-
-      <!-- Research & Innovation -->
-      <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        <div class="mb-8">
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Research & Innovation</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Healthcare" class="h-44 w-full object-cover">
-            <div class="p-5 space-y-1">
-              <span class="px-2 py-0.5 rounded bg-blue-600 text-white text-[10px] font-bold uppercase">Artificial Intelligence</span>
-              <h3 class="text-base font-bold text-slate-900 mt-2">AI for Healthcare Access</h3>
-              <p class="text-xs text-slate-500">An AI-powered platform to improve early disease detection in rural areas.</p>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Clean Energy" class="h-44 w-full object-cover">
-            <div class="p-5 space-y-1">
-              <span class="px-2 py-0.5 rounded bg-blue-600 text-white text-[10px] font-bold uppercase">Sustainable Tech</span>
-              <h3 class="text-base font-bold text-slate-900 mt-2">Clean Energy Solutions</h3>
-              <p class="text-xs text-slate-500">Research on affordable and scalable renewable energy systems.</p>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80" alt="Robotics" class="h-44 w-full object-cover">
-            <div class="p-5 space-y-1">
-              <span class="px-2 py-0.5 rounded bg-blue-600 text-white text-[10px] font-bold uppercase">Robotics</span>
-              <h3 class="text-base font-bold text-slate-900 mt-2">Assistive Robotics</h3>
-              <p class="text-xs text-slate-500">Student-built robots to support people with disabilities.</p>
+          <div class="lg:col-span-5 relative flex justify-center">
+            <div class="relative w-full max-w-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=80" alt="SOA Campus Dome" class="w-full h-72 object-cover">
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Achievements -->
-      <section class="py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-slate-200">
-        <h2 class="text-2xl font-bold text-slate-900 mb-6">Our Achievements</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-white p-6 rounded-2xl border border-slate-200"><h3 class="text-sm font-bold text-slate-900">Top Rankings</h3><p class="text-xs text-slate-500 mt-1">Among leading universities in India</p></div>
-          <div class="bg-white p-6 rounded-2xl border border-slate-200"><h3 class="text-sm font-bold text-slate-900">Patents & Publications</h3><p class="text-xs text-slate-500 mt-1">180+ in recent years</p></div>
-          <div class="bg-white p-6 rounded-2xl border border-slate-200"><h3 class="text-sm font-bold text-slate-900">Global Partnerships</h3><p class="text-xs text-slate-500 mt-1">With universities and companies worldwide</p></div>
-          <div class="bg-white p-6 rounded-2xl border border-slate-200"><h3 class="text-sm font-bold text-slate-900">Student Startups</h3><p class="text-xs text-slate-500 mt-1">50+ supported on campus</p></div>
+      <!-- 5 Hero Stats from blueprint -->
+      <section class="bg-[#0b1120] border-b border-slate-800 text-white py-6 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+          <div class="p-2"><div class="text-2xl font-extrabold text-blue-400">15th</div><div class="text-xs text-slate-300 mt-1">NIRF 2025, University Category</div></div>
+          <div class="p-2"><div class="text-2xl font-extrabold text-blue-400">25th</div><div class="text-xs text-slate-300 mt-1">NIRF 2025, Overall Category</div></div>
+          <div class="p-2"><div class="text-2xl font-extrabold text-blue-400">A++</div><div class="text-xs text-slate-300 mt-1">NAAC (CGPA 3.88) · UGC Graded Autonomy</div></div>
+          <div class="p-2"><div class="text-2xl font-extrabold text-blue-400">Top 4</div><div class="text-xs text-slate-300 mt-1">In India, THE World Reputation 2025</div></div>
+          <div class="p-2"><div class="text-2xl font-extrabold text-blue-400">3rd</div><div class="text-xs text-slate-300 mt-1">Swachh Campus Ranking Nationally</div></div>
+        </div>
+      </section>
+
+      <!-- 6 Constituent Faculties Cards -->
+      <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-blue-600 block">Academic & Clinical Faculties</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Constituent Faculties & National Standing</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-3">
+            <span class="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Medical</span>
+            <h3 class="text-base font-bold text-slate-900">Institute of Medical Sciences (IMS) & SUM Hospital</h3>
+            <div class="text-xs font-semibold text-blue-700 bg-blue-50/70 p-2 rounded-xl">15th in Medical, NIRF 2025 · 701–850 QS Medicine</div>
+            <p class="text-xs text-slate-600 leading-relaxed">NABH and NABL accredited hospital with 100% MBBS & MD/MS graduate clinical placement across top national networks.</p>
+          </div>
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-3">
+            <span class="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Engineering</span>
+            <h3 class="text-base font-bold text-slate-900">Institute of Technical Education and Research (ITER)</h3>
+            <div class="text-xs font-semibold text-blue-700 bg-blue-50/70 p-2 rounded-xl">22nd in Engineering, NIRF 2025 · 2nd in India (Times Engineering)</div>
+            <p class="text-xs text-slate-600 leading-relaxed">Hosts Centres of Excellence with Tech Mahindra and LTTS, achieving a 94.54% B.Tech placement rate and ₹46 LPA peak CTC.</p>
+          </div>
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-3">
+            <span class="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Dental Sciences</span>
+            <h3 class="text-base font-bold text-slate-900">Institute of Dental Sciences (IDS)</h3>
+            <div class="text-xs font-semibold text-blue-700 bg-blue-50/70 p-2 rounded-xl">9th in India in Dental, NIRF 2025 · #1 in Odisha</div>
+            <p class="text-xs text-slate-600 leading-relaxed">Consistently ranked in the top 10 nationally for three consecutive years with a 95.52% BDS/MDS clinical placement rate.</p>
+          </div>
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-3">
+            <span class="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Law</span>
+            <h3 class="text-base font-bold text-slate-900">SOA National Institute of Law (SNIL)</h3>
+            <div class="text-xs font-semibold text-blue-700 bg-blue-50/70 p-2 rounded-xl">10th in India in Law, NIRF 2025 · #1 in Odisha</div>
+            <p class="text-xs text-slate-600 leading-relaxed">Top 10 national law faculty with high placement velocity in tier-1 legal firms and judicial clerkships.</p>
+          </div>
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-3">
+            <span class="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Management</span>
+            <h3 class="text-base font-bold text-slate-900">Institute of Business and Computer Studies (IBCS)</h3>
+            <div class="text-xs font-semibold text-blue-700 bg-blue-50/70 p-2 rounded-xl">25th in Business Studies (#1 in Odisha) · 66th MBA NIRF</div>
+            <p class="text-xs text-slate-600 leading-relaxed">Delivering 97.22% MBA placement with recruiters like Deloitte, EY, KPMG, PwC, ICICI, and Reliance.</p>
+          </div>
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-3">
+            <span class="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Research</span>
+            <h3 class="text-base font-bold text-slate-900">Multi-Disciplinary Research & Global Footprint</h3>
+            <div class="text-xs font-semibold text-blue-700 bg-blue-50/70 p-2 rounded-xl">49th in Research, NIRF 2025 · 251–300 THE Science</div>
+            <p class="text-xs text-slate-600 leading-relaxed">Featuring 38 SOA researchers in Stanford’s Top 2% list and the AIC-SOA Atal Incubation Centre under NITI Aayog.</p>
+          </div>
         </div>
       </section>
     </div>
 
-    <!-- ================= PAGE 5: COLLABORATE WITH SOA ================= -->
+    <!-- ================= PAGE 5: COLLABORATE (#p-collaborate) ================= -->
     <div id="page-collaborate" class="page-section">
       <section class="relative bg-[#070d18] text-white pt-12 sm:pt-16 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-7 space-y-4">
-            <span class="text-[11px] font-mono font-bold tracking-widest text-slate-400 uppercase">FROM IDEAS TO ACTION</span>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">Collaborate with <span class="text-blue-500">SOA</span></h1>
-            <p class="text-lg font-bold text-slate-100">Let's build solutions together.</p>
-            <p class="text-sm text-slate-300 leading-relaxed max-w-xl">
-              Submit your industry challenges, explore research collaborations, mentor talented students or create new opportunities with SOA.
+          <div class="lg:col-span-7 space-y-5">
+            <span class="text-[11px] font-mono font-bold tracking-widest text-cyan-400 uppercase">Corporate Relations & Industry Collaboration</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-sans">Collaborate with <span class="text-blue-500">SOA</span></h1>
+            <p class="text-lg sm:text-xl font-bold text-slate-100">Co-Creating Centres of Excellence, Applied R&D & High-Velocity Talent Pipelines.</p>
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
+              From our recent Tech Mahindra and L&T Technology Services Centres of Excellence to Wipro’s Talent Next pact and LSEG’s record campus intake, explore high-trust partnership pathways at SOA University.
             </p>
           </div>
-          <div class="lg:col-span-5 flex justify-center">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Collaboration" class="rounded-2xl border border-slate-700 shadow-xl max-w-md w-full h-64 object-cover">
+          <div class="lg:col-span-5 relative flex justify-center">
+            <div class="relative w-full max-w-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" alt="Corporate Collab" class="w-full h-72 object-cover">
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Main 2-Column Section -->
-      <section class="py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          <!-- Form -->
-          <div class="lg:col-span-7 bg-white rounded-3xl p-7 sm:p-9 border border-slate-200 space-y-4">
-            <h2 class="text-2xl font-bold text-slate-900">Submit an Industry Challenge</h2>
-            <p class="text-xs text-slate-500 leading-relaxed">Share a real-world problem your organisation is facing. Our faculty and student teams can explore solutions through research, projects or prototypes.</p>
-            <form onsubmit="handleDemoChallenge(event)" class="space-y-3 pt-2">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Challenge Title</label>
-                <input type="text" id="demo-chal-title" required placeholder="e.g. AI-based supply chain forecasting" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs">
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Industry / Sector</label>
-                <select id="demo-chal-sector" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs">
-                  <option>Information Technology & AI</option>
-                  <option>Healthcare & Biotech</option>
-                  <option>Manufacturing & Robotics</option>
-                  <option>Renewable Energy</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Describe the Challenge</label>
-                <textarea id="demo-chal-desc" rows="3" required placeholder="Provide details about the problem, expected outcome and timeline." class="w-full p-4 rounded-xl border border-slate-200 text-xs resize-none"></textarea>
-              </div>
-              <button type="submit" class="px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wide">
-                Submit Challenge
-              </button>
-            </form>
-            <div id="chal-feedback" class="hidden p-3 bg-blue-50 border border-blue-200 rounded-xl text-xs text-blue-900 font-medium"></div>
+      <!-- 4 Pillars -->
+      <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-2">
+            <div class="text-2xl text-blue-600 font-bold">?</div>
+            <h3 class="text-base font-bold text-slate-900">Industry Challenges & Incubation</h3>
+            <p class="text-xs text-slate-600">Bring engineering or clinical challenges for faculty-student prototyping via AIC-SOA Foundation under NITI Aayog.</p>
           </div>
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-2">
+            <div class="text-2xl text-blue-600 font-bold">⚗</div>
+            <h3 class="text-base font-bold text-slate-900">Centres of Excellence & R&D</h3>
+            <p class="text-xs text-slate-600">Co-establish specialized labs modeled on SOA’s recent CoEs with Tech Mahindra (ServiceNow & AI) and LTTS (MedTech).</p>
+          </div>
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-2">
+            <div class="text-2xl text-blue-600 font-bold">☺</div>
+            <h3 class="text-base font-bold text-slate-900">Executive Mentorship & Co-Design</h3>
+            <p class="text-xs text-slate-600">Shape flexible curricula—building on SOA’s Talent Next & Mission10x alliances with Wipro and Blue Star Foundation.</p>
+          </div>
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-2">
+            <div class="text-2xl text-blue-600 font-bold">✉</div>
+            <h3 class="text-base font-bold text-slate-900">High-Velocity Campus Hiring</h3>
+            <p class="text-xs text-slate-600">Recruit from an ecosystem delivering 94.54% B.Tech and 97.22% MBA placement with peak CTC of ₹46 LPA.</p>
+          </div>
+        </div>
+      </section>
 
-          <!-- How It Works Timeline matching Reference -->
-          <div class="lg:col-span-5 bg-white rounded-3xl p-7 sm:p-9 border border-slate-200 space-y-6">
-            <h2 class="text-xl font-bold text-slate-900">How It Works</h2>
-            <div class="space-y-5 pt-1">
-              <div class="flex items-start gap-4">
-                <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center shrink-0">1</div>
-                <div><h3 class="text-sm font-bold text-slate-900">You submit a challenge</h3><p class="text-xs text-slate-500">Share your problem and requirements.</p></div>
-              </div>
-              <div class="flex items-start gap-4">
-                <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center shrink-0">2</div>
-                <div><h3 class="text-sm font-bold text-slate-900">SOA identifies the right team</h3><p class="text-xs text-slate-500">Faculty, students or research groups.</p></div>
-              </div>
-              <div class="flex items-start gap-4">
-                <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center shrink-0">3</div>
-                <div><h3 class="text-sm font-bold text-slate-900">Collaborate on a pilot</h3><p class="text-xs text-slate-500">Define scope, timeline and deliverables.</p></div>
-              </div>
-              <div class="flex items-start gap-4">
-                <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center shrink-0">4</div>
-                <div><h3 class="text-sm font-bold text-slate-900">Track progress</h3><p class="text-xs text-slate-500">Stay updated on milestones and outcomes.</p></div>
-              </div>
+      <!-- Submission Form with mailto & copy -->
+      <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-slate-200">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-5 space-y-4">
+            <h2 class="text-2xl font-extrabold text-slate-900">Submit an Industry Challenge</h2>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Fill in the details to submit directly to our Corporate Relations Cell, or copy the formatted brief for official correspondence.
+            </p>
+          </div>
+          <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Your Name & Title</label>
+              <input type="text" id="chal-name" placeholder="e.g. Ramesh Kumar, VP Engineering" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200">
             </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Work Email</label>
+              <input type="email" id="chal-email" placeholder="name@enterprise.com" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Challenge Title / Focus Area</label>
+              <input type="text" id="chal-title" placeholder="e.g. AI-driven Supply Chain Optimization" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Problem Statement & Scope</label>
+              <textarea id="chal-desc" rows="3" placeholder="Describe the challenge or partnership requirement..." class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200"></textarea>
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+              <button type="button" id="mk" onclick="copyChallengeBrief()" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold">
+                Copy Challenge Brief
+              </button>
+              <button type="button" onclick="emailChallengeBrief()" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold">
+                Send to info@soa.ac.in
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Directory -->
+      <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-slate-200">
+        <div class="bg-[#070d18] text-white rounded-3xl p-8 border border-slate-800 space-y-4">
+          <span class="text-xs font-mono font-bold text-cyan-400 uppercase">Official Directory</span>
+          <h2 class="text-2xl font-extrabold text-white">Direct Contact — SOA Corporate Relations & Placement</h2>
+          <p class="text-xs text-slate-300">Siksha ‘O’ Anusandhan (Deemed to be University), Khandagiri Square, Bhubaneswar – 751030, Odisha, India</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+            <div class="p-3 bg-slate-900 rounded-xl text-xs">
+              <div class="font-bold text-white">Prof. (Dr.) Raj Kumar Hota</div>
+              <div class="text-cyan-300 text-[11px]">Dean, Corporate Relations · Convener, Allyship++</div>
+            </div>
+            <div class="p-3 bg-slate-900 rounded-xl text-xs">
+              <div class="font-bold text-white">Prof. Prasanta Kumar Patra</div>
+              <div class="text-cyan-300 text-[11px]">Pro-Vice Chancellor & Dean, Sponsored Research</div>
+            </div>
+            <div class="p-3 bg-slate-900 rounded-xl text-xs">
+              <div class="font-bold text-white">Mr. Sumit Mitra</div>
+              <div class="text-cyan-300 text-[11px]">Head, Career Development Cell (CDC)</div>
+            </div>
+          </div>
+          <div class="pt-2 text-xs text-slate-400">
+            Email: <a href="mailto:info@soa.ac.in" class="text-blue-400 font-bold">info@soa.ac.in</a> | Placement Portal: <a href="https://www.placements.soa.ac.in" target="_blank" class="text-blue-400 font-bold">www.placements.soa.ac.in</a>
           </div>
         </div>
       </section>
     </div>
 
-    <!-- ================= PAGE 6: ALLYSHIP IMPACT ================= -->
+    <!-- ================= PAGE 6: IMPACT (#p-impact) ================= -->
     <div id="page-impact" class="page-section">
       <section class="relative bg-[#070d18] text-white pt-12 sm:pt-16 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-7 space-y-4">
-            <span class="text-[11px] font-mono font-bold tracking-widest text-slate-400 uppercase">MEASURING WHAT MATTERS</span>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">Allyship Impact</h1>
-            <p class="text-lg font-bold text-slate-100">Conversations today. A stronger tomorrow.</p>
-            <p class="text-sm text-slate-300 leading-relaxed max-w-xl">
-              A look at the outcomes, collaborations and opportunities created through the Allyship initiative at SOA University.
+          <div class="lg:col-span-7 space-y-5">
+            <span class="text-[11px] font-mono font-bold tracking-widest text-cyan-400 uppercase">Measurable Outcomes & Media Footprint</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-sans">The Impact of <span class="text-blue-500">Allyship</span><span class="text-cyan-400 font-mono">++</span></h1>
+            <p class="text-lg sm:text-xl font-bold text-slate-100">Conversations in the Boardroom. Structural Transformations on Campus.</p>
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
+              Across six chapters in five corporate capitals, Allyship++ has shifted industry-academia engagement from transactional placement drives to sustained leadership dialogue—generating national media coverage, new Centres of Excellence, and actionable workplace frameworks.
             </p>
           </div>
-          <div class="lg:col-span-5 flex justify-center">
-            <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80" alt="Handshake" class="rounded-2xl border border-slate-700 shadow-xl max-w-md w-full h-64 object-cover">
+          <div class="lg:col-span-5 relative flex justify-center">
+            <div class="relative w-full max-w-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=1000&q=80" alt="Handshake" class="w-full h-72 object-cover">
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Impact Statistics Bar -->
-      <section class="bg-white border-b border-slate-200 py-6 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
-          <div><div class="text-3xl font-extrabold text-blue-600">100+</div><div class="text-xs text-slate-500 font-medium">Corporate Leaders</div></div>
-          <div><div class="text-3xl font-extrabold text-blue-600">25+</div><div class="text-xs text-slate-500 font-medium">Industries</div></div>
-          <div><div class="text-3xl font-extrabold text-blue-600">50+</div><div class="text-xs text-slate-500 font-medium">Collaboration Opportunities</div></div>
-          <div><div class="text-3xl font-extrabold text-blue-600">20+</div><div class="text-xs text-slate-500 font-medium">Mentorship Commitments</div></div>
-          <div><div class="text-3xl font-extrabold text-blue-600">10+</div><div class="text-xs text-slate-500 font-medium">Pilot Projects Initiated</div></div>
+      <!-- 3 Outcome Pillars -->
+      <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-blue-600 block">Institutional Action</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">From Dialogue to Institutional Action</h2>
         </div>
-      </section>
-
-      <!-- Success Stories matching Reference -->
-      <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-8">Success Stories</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Healthcare" class="h-44 w-full object-cover">
-            <div class="p-5 space-y-1">
-              <h3 class="text-base font-bold text-slate-900">AI Solution for Rural Healthcare</h3>
-              <p class="text-xs text-slate-500">Partnership with leading healthcare networks to pilot automated disease screening in regional clinics.</p>
-            </div>
+          <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm space-y-3">
+            <span class="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full">Curriculum & CoE</span>
+            <h3 class="text-base font-bold text-slate-900">CoE Co-Creation</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Boardroom feedback from Bengaluru, Hyderabad, Kolkata, Mumbai, and Chennai translated into specialized skill labs on campus—including the July 2026 Tech Mahindra CoE at ITER and Wipro job-readiness tracks.</p>
           </div>
+          <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm space-y-3">
+            <span class="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full">Recruitment Record</span>
+            <h3 class="text-base font-bold text-slate-900">Record Graduate Absorption</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Deepened trust among Fortune 500 recruiters contributed to a 94.54% engineering placement rate, 97.22% MBA placement, and LSEG selecting 11 SOA students in a single drive—its highest campus tally in India.</p>
+          </div>
+          <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm space-y-3">
+            <span class="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full">Workplace Reform</span>
+            <h3 class="text-base font-bold text-slate-900">Gen-Z HR Policy Adoption</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Over 400 participating CHROs, VPs, and talent leaders across six conclaves co-developed actionable playbooks on psychological safety, Upstander/Sponsor allyship roles, and empathetic Gen-Z onboarding.</p>
+          </div>
+        </div>
+      </section>
 
-          <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Sustainability" class="h-44 w-full object-cover">
-            <div class="p-5 space-y-1">
-              <h3 class="text-base font-bold text-slate-900">Sustainability Research Partnership</h3>
-              <p class="text-xs text-slate-500">Joint industrial pilot with energy conglomerates testing high-durability renewable systems.</p>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Internships" class="h-44 w-full object-cover">
-            <div class="p-5 space-y-1">
-              <h3 class="text-base font-bold text-slate-900">Student Internship Programs</h3>
-              <p class="text-xs text-slate-500">Corporate residency pipelines placing 120+ top SOA engineers into high-growth product teams.</p>
-            </div>
-          </div>
+      <!-- 9 Media Clippings Gallery -->
+      <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-slate-200">
+        <div class="max-w-3xl space-y-2 mb-10">
+          <h2 class="text-2xl font-extrabold text-slate-900">In the Press</h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            National and regional print and digital publications—including Deccan Chronicle, The Statesman, Prameya News, OdishaBytes, The Sakala, Samaya, Around Odisha, Orissa Today, and The Sanchar—have chronicled SOA’s Allyship++ journey across India. Click any clipping to inspect the full report.
+          </p>
+        </div>
+        <div id="press-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Dynamically populated from JS array K below -->
         </div>
       </section>
     </div>
@@ -768,188 +728,382 @@
 
   <!-- ================= FOOTER ================= -->
   <footer class="bg-[#070d18] text-slate-300 pt-12 pb-8 border-t border-slate-800 text-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-      <div class="text-base font-extrabold text-white tracking-wider">SOA UNIVERSITY • ALLYSHIP 2025</div>
-      <p class="text-slate-400">“Bridging Industry. Academia. A Brighter Tomorrow.”</p>
-      <div class="flex items-center justify-center gap-4 text-slate-400 pt-2">
-        <button onclick="switchPage('home')" class="hover:text-blue-400">Home</button>
-        <span>•</span>
-        <button onclick="switchPage('about')" class="hover:text-blue-400">About</button>
-        <span>•</span>
-        <button onclick="switchPage('event')" class="hover:text-blue-400">Event</button>
-        <span>•</span>
-        <button onclick="switchPage('discover')" class="hover:text-blue-400">Discover SOA</button>
-        <span>•</span>
-        <button onclick="switchPage('collaborate')" class="hover:text-blue-400">Collaborate</button>
-        <span>•</span>
-        <button onclick="switchPage('impact')" class="hover:text-blue-400">Impact</button>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="font-bold text-white text-sm">SOA UNIVERSITY — ALLYSHIP++</span>
+        <p class="text-slate-400 text-[11px] mt-0.5">Industry–Academia Leadership Conclave Series organised by Siksha ‘O’ Anusandhan, Bhubaneswar.</p>
       </div>
-      <p class="text-slate-500 pt-4">© 2025 Siksha 'O' Anusandhan (SOA University), Bhubaneswar, Odisha, India. All Rights Reserved.</p>
+      <div class="text-slate-400 text-[11px]">
+        © 2024–2026 Siksha ‘O’ Anusandhan Deemed to be University. All Rights Reserved.
+      </div>
     </div>
   </footer>
 
   <!-- ================= MODALS ================= -->
+  <!-- Get Invited Modal -->
+  <div id="modal-invite" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative w-full max-w-lg bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 p-6 sm:p-8 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-bold text-slate-900">Request Executive Invitation</h3>
+        <button type="button" onclick="closeInviteModal()" class="text-slate-400 hover:text-slate-800 text-lg font-bold">✕</button>
+      </div>
+      <div id="invite-form-container" class="space-y-3">
+        <input type="text" id="inv-name" placeholder="Full Name & Designation" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200">
+        <input type="email" id="inv-email" placeholder="Corporate Email Address" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200">
+        <input type="text" id="inv-org" placeholder="Organization / Enterprise" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200">
+        <select id="inv-city" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200">
+          <option value="Bengaluru">Bengaluru Chapter</option>
+          <option value="Hyderabad">Hyderabad Chapter</option>
+          <option value="Kolkata">Kolkata Chapter</option>
+          <option value="Mumbai">Mumbai Chapter</option>
+          <option value="Chennai">Chennai Chapter</option>
+          <option value="Bhubaneswar">Bhubaneswar Campus Conclave</option>
+        </select>
+        <button type="button" onclick="submitInvite()" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs">
+          Submit Invitation Request
+        </button>
+      </div>
+      <div id="invite-success" class="hidden text-center py-6 space-y-2">
+        <div class="text-3xl text-emerald-600">✓</div>
+        <div class="text-base font-bold text-slate-900">Invitation Request Confirmed!</div>
+        <p class="text-xs text-slate-600">Your reference ID is <span id="inv-ref" class="font-mono font-bold text-blue-600"></span>.</p>
+      </div>
+    </div>
+  </div>
 
-  <!-- 1. Get Invited Modal -->
-  <div id="modal-invite" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
-    <div class="relative w-full max-w-lg bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 sm:p-7 shadow-2xl">
-      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+  <!-- Video Modal -->
+  <div id="modal-video" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative w-full max-w-3xl bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
+      <div class="flex items-center justify-between p-3 border-b border-slate-800 text-white text-xs">
+        <span class="font-bold">Conclave Highlights Video</span>
+        <button type="button" onclick="closeVideoModal()" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <div class="aspect-video w-full bg-black">
+        <iframe id="video-frame" class="w-full h-full" src="" title="Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Press Clipping Inspection Lightbox Modal -->
+  <div id="modal-clipping" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative w-full max-w-2xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 p-6 sm:p-8 space-y-4">
+      <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-3">
         <div>
-          <span class="text-[10px] font-mono uppercase tracking-widest text-blue-400 font-bold">A PRIVATE INVITATION EVENT</span>
-          <h3 class="text-xl font-bold text-white">Request Your Invitation</h3>
+          <span id="clip-outlet" class="text-xs font-mono font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full"></span>
+          <h3 id="clip-title" class="text-lg font-bold text-slate-900 mt-2"></h3>
+          <span id="clip-date" class="text-xs text-slate-500 font-medium block mt-0.5"></span>
         </div>
-        <button onclick="closeInviteModal()" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-slate-300 hover:text-white">✕</button>
+        <button type="button" onclick="closeClipModal()" class="text-slate-400 hover:text-slate-800 text-lg font-bold">✕</button>
       </div>
-
-      <div id="invite-form-container" class="pt-4 space-y-3">
-        <p class="text-xs text-slate-400">Join 100+ corporate leaders and university researchers at ALLYSHIP 2025 on 10 January 2025.</p>
-        <form onsubmit="handleInviteSubmit(event)" class="space-y-3">
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name *</label>
-            <input type="text" id="inv-name" required placeholder="e.g. Ramesh Chandra" class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Corporate Email *</label>
-            <input type="email" id="inv-email" required placeholder="ramesh@company.com" class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Organization / Company *</label>
-            <input type="text" id="inv-org" required placeholder="e.g. Tata Consultancy Services" class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Designation / Title</label>
-            <input type="text" id="inv-role" placeholder="e.g. VP Engineering / HR Director" class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white">
-          </div>
-          <button type="submit" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs tracking-wide">
-            Submit Invitation Request
-          </button>
-        </form>
-      </div>
-
-      <div id="invite-success-container" class="hidden text-center py-6 space-y-3">
-        <div class="w-12 h-12 rounded-full bg-blue-600 text-white mx-auto flex items-center justify-center font-bold text-lg">✓</div>
-        <h4 class="text-lg font-bold text-white">Invitation Request Logged!</h4>
-        <p class="text-xs text-slate-400">Thank you. The executive committee will send your pass confirmation to your email.</p>
-        <div id="invite-ref-code" class="text-xs font-mono font-bold text-blue-400"></div>
-        <button onclick="closeInviteModal()" class="px-5 py-2 rounded-lg bg-slate-800 text-white text-xs">Close</button>
+      <blockquote id="clip-quote" class="text-xs sm:text-sm text-slate-800 italic border-l-4 border-blue-600 pl-4 py-1 bg-slate-50 rounded-r-xl"></blockquote>
+      <p id="clip-summary" class="text-xs text-slate-600 leading-relaxed"></p>
+      <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[11px] text-slate-400">Official Media Record · SOA University</span>
+        <a id="clip-link" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold">Read Official Report ↗</a>
       </div>
     </div>
   </div>
 
-  <!-- 2. Video Modal -->
-  <div id="modal-video" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
-    <div class="relative w-full max-w-2xl bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 text-center space-y-4">
-      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-        <span class="text-xs font-bold font-mono text-blue-400 uppercase">ALLYSHIP 2025 • Official Event Film</span>
-        <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-slate-300">✕</button>
-      </div>
-      <div class="aspect-video w-full bg-slate-950 rounded-2xl flex flex-col items-center justify-center p-6">
-        <div class="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center text-white mb-2 shadow-lg shadow-blue-600/40">
-          <svg class="w-6 h-6 fill-white ml-0.5" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-        </div>
-        <h4 class="text-base font-bold">Bridging Industry. Academia. A Brighter Tomorrow.</h4>
-        <p class="text-xs text-slate-400 mt-1">Conclave Teaser & Innovation Highlights at SOA University</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- 3. Virtual Tour Modal -->
-  <div id="modal-tour" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
-    <div class="relative w-full max-w-2xl bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 text-center space-y-4">
-      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-        <span class="text-xs font-bold font-mono text-blue-400 uppercase">SOA University Campus Tour</span>
-        <button onclick="closeTourModal()" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-slate-300">✕</button>
-      </div>
-      <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=80" alt="SOA Campus" class="w-full h-64 object-cover rounded-xl">
-      <p class="text-xs text-slate-300">Explore the 125-acre academic and research complex in Bhubaneswar, Odisha.</p>
-      <button onclick="closeTourModal()" class="px-5 py-2 rounded-lg bg-blue-600 text-white text-xs font-bold">Close Tour</button>
-    </div>
-  </div>
-
-  <!-- ================= JAVASCRIPT CONTROLLERS ================= -->
+  <!-- ================= JAVASCRIPT MASTER DATA & LOGIC ================= -->
   <script>
-    // Tab switching for standalone demo
-    function switchPage(pageKey) {
-      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
-      const target = document.getElementById('page-' + pageKey);
-      if (target) {
-        target.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+    // Page switcher logic
+    function switchPage(pageId) {
+      document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+      const target = document.getElementById('page-' + pageId);
+      if (target) target.classList.add('active');
 
-      // Update Nav buttons
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('text-blue-400', 'font-bold');
-        btn.classList.add('text-slate-300');
+        btn.classList.add('text-slate-300', 'font-semibold');
         const ind = btn.querySelector('.nav-indicator');
         if (ind) ind.classList.add('hidden');
       });
 
-      const activeBtn = document.getElementById('nav-' + pageKey);
-      if (activeBtn) {
-        activeBtn.classList.remove('text-slate-300');
-        activeBtn.classList.add('text-blue-400', 'font-bold');
-        const ind = activeBtn.querySelector('.nav-indicator');
+      const activeNav = document.getElementById('nav-' + pageId);
+      if (activeNav) {
+        activeNav.classList.remove('text-slate-300', 'font-semibold');
+        activeNav.classList.add('text-blue-400', 'font-bold');
+        const ind = activeNav.querySelector('.nav-indicator');
         if (ind) ind.classList.remove('hidden');
       }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Mobile menu toggle
     function toggleMobileMenu() {
       const m = document.getElementById('mobile-menu');
       m.classList.toggle('hidden');
     }
 
-    // Modal controls
     function openInviteModal() {
       document.getElementById('modal-invite').classList.remove('hidden');
     }
     function closeInviteModal() {
       document.getElementById('modal-invite').classList.add('hidden');
-      document.getElementById('invite-form-container').classList.remove('hidden');
-      document.getElementById('invite-success-container').classList.add('hidden');
     }
-
-    function openVideoModal() {
-      document.getElementById('modal-video').classList.remove('hidden');
-    }
-    function closeVideoModal() {
-      document.getElementById('modal-video').classList.add('hidden');
-    }
-
-    function openTourModal() {
-      document.getElementById('modal-tour').classList.remove('hidden');
-    }
-    function closeTourModal() {
-      document.getElementById('modal-tour').classList.add('hidden');
-    }
-
-    // Form handlers
-    function handleInviteSubmit(e) {
-      e.preventDefault();
-      const code = 'INV-2025-' + Math.floor(1000 + Math.random() * 9000);
+    function submitInvite() {
+      const name = document.getElementById('inv-name').value;
+      if (!name) return;
+      const ref = 'INV-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('inv-ref').textContent = ref;
       document.getElementById('invite-form-container').classList.add('hidden');
-      document.getElementById('invite-ref-code').innerText = 'Reference Pass ID: ' + code;
-      document.getElementById('invite-success-container').classList.remove('hidden');
-
+      document.getElementById('invite-success').classList.remove('hidden');
       if (typeof confetti === 'function') {
-        confetti({
-          particleCount: 50,
-          spread: 60,
-          origin: { y: 0.6 }
-        });
+        confetti({ particleCount: 75, spread: 60, origin: { y: 0.6 } });
       }
     }
 
-    function handleDemoChallenge(e) {
-      e.preventDefault();
-      const title = document.getElementById('demo-chal-title').value;
-      const ref = 'CHAL-2025-' + Math.floor(1000 + Math.random() * 9000);
-      const fb = document.getElementById('chal-feedback');
-      fb.innerHTML = `✓ Challenge <strong>"${title}"</strong> recorded successfully under reference <strong>${ref}</strong>. The SOA Industry-Academia Secretariat has received your submission.`;
-      fb.classList.remove('hidden');
-      e.target.reset();
+    function openVideoModal(id) {
+      document.getElementById('video-frame').src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+      document.getElementById('modal-video').classList.remove('hidden');
     }
+    function closeVideoModal() {
+      document.getElementById('video-frame').src = '';
+      document.getElementById('modal-video').classList.add('hidden');
+    }
+
+    // Master Event Conclaves Array C: Complete 6 conclaves
+    const C = [
+      {
+        n: "Bengaluru (1.0)",
+        t: "Allyship++ 1.0: Leadership and Collaboration Across Disciplines",
+        m: "Inaugural Edition · ~70 Corporate Leaders · June 2024",
+        d: "SOA Vice-Chancellor Prof. Pradipta Kumar Nanda delivered the inaugural address on collaborative leadership, followed by an inspiring virtual keynote on ‘Leadership in Sports’ by Olympian and World Championship medalist Anju Bobby George. Senior leaders from Microsoft, Dell, Zscaler, and major global capability centres deliberated on engineering cultures, tech-worker burnout, and hybrid global teams.",
+        guests: "Anju Bobby George (Olympian & World Medalist), Prof. Pradipta Kumar Nanda (VC), Dr. Raj Kumar Hota (Dean & Convener)",
+        mod: "Rajeev Kumar Singh (Chief Strategist, Open Link Foundation)",
+        panel: "Dr. P.B. Kotur (LTTS), C. Aparna (Torry Harris), Baliram Mutagekar (BNY Mellon), Dr. S.J. Naganagouda (Tally Solutions), Arun Parija (Coserve)"
+      },
+      {
+        n: "Hyderabad (1.0)",
+        t: "Allyship++ 1.0: Practicing Allyship at the Organizational Level",
+        m: "Second Edition · 60+ Corporate & HR Leaders · July 2024",
+        d: "Former Indian Test cricketer Arshad Ayub joined as Chief Guest to highlight leadership and collaboration in dynamic business environments. Convened by Prof. (Dr.) Raj Kumar Hota alongside Prof. P.K. Patra (Dean, Sponsored Research), CXO advisors and CSIR scientists examined organizational allyship and industry-academia R&D.",
+        guests: "Arshad Ayub (Former Indian Test & ODI Cricketer), Prof. (Dr.) Raj Kumar Hota (Dean & Convener), Dr. P.K. Patra (Dean, Sponsored Research)",
+        mod: "Collective CXO & Scientific Roundtable Format",
+        panel: "Rohit Adlakha (Human Edge), Lavanam Amballa (Integraminds), Pushkala Balasubramanian (Kloudgin), Kiranmal Pendyala (UPS), Dr. Umesh Udayaprakash (Innova), Dr. Bapuji Maringanti (CSIR)"
+      },
+      {
+        n: "Kolkata (1.0)",
+        t: "Allyship++ 1.0: Bridging Legacy Business, Digital Transformation & DEI",
+        m: "Third Edition · Two Panels & Sports Tribute · September 2024",
+        d: "Featuring two powerhouse industry panels spanning cloud consulting, fintech, telecom, and Fortune 500 DEI advisory, the Kolkata chapter also celebrated sporting greatness with 1964 Olympic hockey gold medalist Gurbux Singh, football legend Gautam Sarkar (‘Indian Beckenbauer’), and Satyaprakash Krishna (mentor to M.S. Dhoni).",
+        guests: "Gurbux Singh (1964 Olympic Hockey Gold), Gautam Sarkar (Football Legend), Satyaprakash Krishna (Dhoni's Mentor), Smruti Ranjan Mohanty, IAS",
+        mod: "Pradip Bandyopadhyay (Panel 2 Moderator)",
+        panel: "Brishti Mondal (NRI FinTech), Rashmita Parija (Lexmark), Sumit Agarwal (DEI Advisor), Nadeem Kazim (Splice HR), Sudipto Ray (PwC), Tumpa Sarkar (WICCI), Debalina Roy (Vodafone), Saurabh Roy (Jio)"
+      },
+      {
+        n: "Mumbai (1.0)",
+        t: "Allyship++ 1.0: Building Inclusive and Empowered Workplaces",
+        m: "Fourth Edition · ~60 Senior Leaders · October 2025",
+        d: "Following an inaugural address by VC Prof. Pradipta Kumar Nanda, former Indian Test cricketer Nilesh Kulkarni led a fireside conversation on resilience and sports education with Olympian Anand Menezes. Dr. P.B. Kotur moderated a dynamic panel on balancing quarterly growth with employee well-being and psychological safety.",
+        guests: "Nilesh Kulkarni (Former Indian Test Cricketer), Anand Menezes (Olympian & AFI Senior Consultant), Prof. Pradipta Kumar Nanda (VC)",
+        mod: "Dr. P.B. Kotur (Author, Motivational Speaker & Corporate Executive)",
+        panel: "Dr. Brillian S.K. (Times Professional Learning), Dr. Meenakshi Banerjee (Business Next), Swapnakant Samal (Protiviti), Gauri Das (India Factoring)"
+      },
+      {
+        n: "Hyderabad (2.0)",
+        t: "Allyship++ 2.0: Practicing Allyship in Gen-Z Leadership",
+        m: "Le Meridien, Gachibowli · May 2026",
+        d: "Launching the 2.0 cycle, this conclave explored workforce transformation, psychological safety, and the campus-to-corporate transition for Gen-Z professionals. Dr. G. Srinivas Patnaik (AFI Secretary) shared insights on discipline and mentorship in young talent.",
+        guests: "Dr. G. Srinivas Patnaik (Secretary, Athletics Federation of India), Prof. Prasanta Kumar Patra (Pro-VC), Prof. (Dr.) Raj Kumar Hota (Dean & Convener)",
+        mod: "Prof. Sanjay Dhir (Professor, IIT Delhi)",
+        panel: "Rachita Mahadev (Akamai), Bikram K. Nayak (NCC Ltd), Dr. Reena Das (Keolis Hyderabad), Ishadarshi P. Mishra (Reckitt)"
+      },
+      {
+        n: "Chennai (2.0)",
+        t: "Allyship++ 2.0: Practicing Allyship as a Leadership Responsibility",
+        m: "60+ Industry & HR Leaders · 31 July 2026",
+        d: "Featuring a fireside chat with high-performance athletics coach Premanand J. (who trained the Indian national sprint team for the Paris Olympics) on discipline and mentorship, followed by a panel moderated by Standard Chartered’s Global Head Archana Grover.",
+        guests: "Premanand J. (Paris Olympics National Sprint Coach), Prof. Pradipta Kumar Nanda (VC), Prof. (Dr.) Raj Kumar Hota (Dean & Convener)",
+        mod: "Archana Grover (Global Head – Capabilities, Standard Chartered)",
+        panel: "Suganya Veeraraghavan (Rocket India), Suresh Aade (Foodhub), Archana Mukunthan (Nordex Group), R.K. Ramachandran (KaarTech), M.D. Joshua David (Mphasis)"
+      }
+    ];
+
+    // Master Press Array K: 9 Clippings
+    const K = [
+      {
+        outlet: "Deccan Chronicle",
+        title: "Allyship++ Conclave Focuses on Leadership and Collaboration",
+        date: "July 2024 · Hyderabad",
+        quote: "SOA convenes corporate leadership to bridge the gap between academic research and business transformation.",
+        summary: "Detailed coverage of the Hyderabad chapter headlined by former Indian cricketer Arshad Ayub, CXOs from UPS, Human Edge, and CSIR scientists deliberating collaborative leadership.",
+        link: "https://www.deccanchronicle.com/southern-states/allyship-conclave-focuses-on-leadership-and-collaboration-1812653",
+        image: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        outlet: "The Statesman",
+        title: "Odisha: SOA Ties Up with Tech Mahindra to Boost Industry-Ready Skills",
+        date: "July 2026 · Bhubaneswar",
+        quote: "A pioneering milestone accelerating hands-on enterprise competency directly within university laboratories.",
+        summary: "Reporting on the inauguration of the Tech Mahindra Centre of Excellence at ITER campus by VC Prof. Pradipta Kumar Nanda and Tech Mahindra's Dharmaraj Nayak in ServiceNow and AI/ML.",
+        link: "https://www.thestatesman.com/business/odisha-soa-ties-up-with-tech-mahindra-to-boost-industry-ready-skills-1503616250.html",
+        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        outlet: "Prameya News",
+        title: "SOA Organises Allyship++ 2.0 with Focus on Gen-Z Aspirations at Hyderabad",
+        date: "May 2026 · Hyderabad",
+        quote: "Modern enterprises must adapt to Gen-Z aspirations through intentional, daily mentorship.",
+        summary: "Focusing on the 2.0 cycle launch at Le Meridien, Gachibowli, featuring AFI Secretary Dr. G. Srinivas Patnaik, IIT Delhi's Prof. Sanjay Dhir, and HR heads from Akamai, Reckitt, and NCC Ltd.",
+        link: "https://www.prameyanews.com/soa-organises-allyship-20-with-focus-on-gen-z-aspirations-at-hyderabad",
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        outlet: "OdishaBytes",
+        title: "70 Corporate Leaders Attend SOA's Allyship++ Event at Bengaluru",
+        date: "June 2024 · Bengaluru",
+        quote: "Over 70 corporate stalwarts gathered in Bengaluru to initiate a transformative dialogue with SOA University.",
+        summary: "Reporting on the inaugural conclave with top executives from Microsoft, Dell, Zscaler, BNY Mellon, and an inspiring keynote by Olympian Anju Bobby George.",
+        link: "https://odishabytes.com/70-corporate-leaders-attend-soas-allyship-event-at-bengaluru/",
+        image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        outlet: "Prameya News",
+        title: "Nilesh Kulkarni Addresses SOA's Allyship Conclave at Mumbai",
+        date: "October 2025 · Mumbai",
+        quote: "Connecting the resilience of international sport with executive well-being and boardroom empathy.",
+        summary: "Former Indian Test cricketer Nilesh Kulkarni and Olympian Anand Menezes joined VC Prof. Pradipta Kumar Nanda and LTTS Global Head Dr. P.B. Kotur in Mumbai.",
+        link: "https://www.prameyanews.com/nilesh-kulkarni-addresses-soas-allyship-conclave-at-mumbai",
+        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        outlet: "UpdateOdisha",
+        title: "First Time in Odisha: LSEG Hires 11 SOA Students",
+        date: "September 2025 · Bhubaneswar",
+        quote: "A testament to the global competitiveness of SOA's technical curriculum and student caliber.",
+        summary: "London Stock Exchange Group (LSEG) selected 11 B.Tech and MCA students from SOA following a rigorous six-round recruitment drive.",
+        link: "https://updateodisha.com/2025/09/13/first-time-in-odisha-lseg-hires-11-soa-students-87858/",
+        image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        outlet: "The Sakala",
+        title: "Allyship++ Conclave at Kolkata: Sports Legends & Corporate Leaders",
+        date: "September 2024 · Kolkata",
+        quote: "Honoring India's greatest athletic icons while laying the roadmap for modern inclusive workplaces.",
+        summary: "1964 Olympic hockey gold medalist Gurbux Singh, footballer Gautam Sarkar, and Dhoni's mentor Satyaprakash Krishna joined PwC and Lexmark in Kolkata.",
+        link: "https://www.soa.ac.in/general-notifications/2024/9/30/soa-organises-allyship-conclave-at-kolkata",
+        image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        outlet: "Around Odisha",
+        title: "SOA University Hosts Allyship++ 2.0 at Chennai",
+        date: "August 2026 · Chennai",
+        quote: "Allyship is not an optional HR policy—it is a daily leadership responsibility that unlocks sustainable innovation.",
+        summary: "Paris Olympics sprint coach Premanand J. and Standard Chartered Global Head Archana Grover led deliberations with 60+ talent heads in Chennai.",
+        link: "https://www.soa.ac.in/general-notifications/2026/8/7/soa-university-hosts-allyship-20-at-chennai",
+        image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        outlet: "The Sanchar",
+        title: "SOA Ranked 15th in Country in NIRF 2025; Climbs in Engineering & Medicine",
+        date: "September 2025 · National",
+        quote: "Reinforcing SOA's stature as a multidisciplinary powerhouse and the #1 university in Odisha.",
+        summary: "Ministry of Education announces NIRF 2025: SOA ranks 15th nationally in the University category with score of 63.14. ITER engineering ascends to 22nd.",
+        link: "https://www.soa.ac.in/general-notifications/2025/9/4/soa-ranked-15th-in-country-in-2025-nirf-rankings-climbs-up-the-ladder-in-medical-sciences-and-engineering",
+        image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80"
+      }
+    ];
+
+    // Populate Conclaves on Event Page
+    function renderConclaves() {
+      const container = document.getElementById('conclaves-container');
+      if (!container) return;
+      container.innerHTML = C.map((c, i) => `
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4">
+            <div>
+              <span class="text-xs font-mono font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">${c.n}</span>
+              <h3 class="text-lg sm:text-xl font-bold text-slate-900 mt-2">${c.t}</h3>
+              <span class="text-xs text-slate-500 font-medium">${c.m}</span>
+            </div>
+            <button type="button" onclick="openInviteModal()" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs">Get Invited</button>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${c.d}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2 text-xs">
+            <div class="p-3 bg-amber-50/60 border border-amber-200 rounded-xl">
+              <span class="font-bold text-amber-800 block text-[10px] uppercase font-mono">Special Guests & Sports Icons</span>
+              <span class="text-slate-800 mt-0.5 block">${c.guests}</span>
+            </div>
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+              <span class="font-bold text-slate-700 block text-[10px] uppercase font-mono">Moderator</span>
+              <span class="text-slate-800 mt-0.5 block">${c.mod}</span>
+            </div>
+            <div class="p-3 bg-blue-50/50 border border-blue-200 rounded-xl">
+              <span class="font-bold text-blue-800 block text-[10px] uppercase font-mono">Panelists</span>
+              <span class="text-slate-800 mt-0.5 block">${c.panel}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Populate Press Clippings on Impact Page
+    function renderPressGallery() {
+      const container = document.getElementById('press-gallery');
+      if (!container) return;
+      container.innerHTML = K.map((k, i) => `
+        <div onclick="openClipModal(${i})" class="bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md hover:border-blue-300 transition-all cursor-pointer flex flex-col justify-between group">
+          <div class="relative h-44 w-full bg-slate-900 overflow-hidden">
+            <img src="${k.image}" alt="${k.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-cyan-400 font-mono text-[10px] font-bold px-2.5 py-1 rounded-full border border-slate-700">${k.outlet}</div>
+          </div>
+          <div class="p-5 space-y-2 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] text-slate-500 font-mono">${k.date}</span>
+              <h3 class="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors mt-1 line-clamp-2">${k.title}</h3>
+              <p class="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed">${k.summary}</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
+              <span>Inspect Report</span>
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openClipModal(idx) {
+      const k = K[idx];
+      if (!k) return;
+      document.getElementById('clip-outlet').textContent = k.outlet;
+      document.getElementById('clip-title').textContent = k.title;
+      document.getElementById('clip-date').textContent = k.date;
+      document.getElementById('clip-quote').textContent = '“' + k.quote + '”';
+      document.getElementById('clip-summary').textContent = k.summary;
+      document.getElementById('clip-link').href = k.link;
+      document.getElementById('modal-clipping').classList.remove('hidden');
+    }
+    function closeClipModal() {
+      document.getElementById('modal-clipping').classList.add('hidden');
+    }
+
+    function copyChallengeBrief() {
+      const title = document.getElementById('chal-title').value || "[Challenge Title]";
+      const name = document.getElementById('chal-name').value || "[Corporate Leader]";
+      const email = document.getElementById('chal-email').value || "[Contact Email]";
+      const desc = document.getElementById('chal-desc').value || "[Problem Statement]";
+      const text = `SOA ALLYSHIP++ INDUSTRY CHALLENGE BRIEF\nTitle: ${title}\nSubmitted By: ${name} (${email})\nScope:\n${desc}\nSent via SOA University Allyship++ Platform (https://www.placements.soa.ac.in)`;
+      navigator.clipboard.writeText(text);
+      const btn = document.getElementById('mk');
+      btn.textContent = 'Copied to Clipboard!';
+      setTimeout(() => { btn.textContent = 'Copy Challenge Brief'; }, 2500);
+    }
+
+    function emailChallengeBrief() {
+      const title = document.getElementById('chal-title').value || "Industry Challenge Submission";
+      const name = document.getElementById('chal-name').value || "";
+      const email = document.getElementById('chal-email').value || "";
+      const desc = document.getElementById('chal-desc').value || "";
+      const body = `Title: ${title}\nFrom: ${name} (${email})\n\nChallenge Description:\n${desc}\n\nSubmitted via SOA Allyship++ Portal.`;
+      window.location.href = `mailto:info@soa.ac.in?subject=${encodeURIComponent("Industry Challenge: " + title)}&body=${encodeURIComponent(body)}`;
+    }
+
+    // Init on load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderConclaves();
+      renderPressGallery();
+    });
   </script>
 </body>
 </html>

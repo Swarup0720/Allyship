@@ -76,8 +76,8 @@ export function Navbar() {
                     UNIVERSITY
                   </span>
                 </div>
-                <span className="text-[10px] tracking-wider text-blue-400 font-mono font-medium -mt-1 hidden sm:block">
-                  ALLYSHIP 2025
+                <span className="text-[10px] tracking-wider text-cyan-400 font-mono font-bold -mt-1 hidden sm:block">
+                  ALLYSHIP++
                 </span>
               </div>
             </Link>
