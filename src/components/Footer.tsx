@@ -3,9 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import {
-  Mail,
   MapPin,
-  Clock,
   ExternalLink,
   CheckCircle2,
   Globe,
@@ -29,11 +27,10 @@ export function Footer() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
     { name: "Event", href: "/event" },
-    { name: "Discover SOA", href: "/discover-soa" },
-    { name: "Collaborate", href: "/collaborate" },
     { name: "Impact", href: "/impact" },
+    { name: "Discover", href: "/discover-soa" },
+    { name: "Collaborate", href: "/collaborate" },
   ];
 
   return (
@@ -43,29 +40,12 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="inline-flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full border border-blue-400/40 bg-gradient-to-br from-blue-950 to-slate-900 flex items-center justify-center text-blue-400 shadow-sm">
-                <svg viewBox="0 0 32 32" fill="none" className="w-6 h-6">
-                  <ellipse
-                    cx="16"
-                    cy="16"
-                    rx="12"
-                    ry="5"
-                    transform="rotate(-25 16 16)"
-                    stroke="#3B82F6"
-                    strokeWidth="1.8"
-                    strokeDasharray="2 1.5"
-                  />
-                  <ellipse
-                    cx="16"
-                    cy="16"
-                    rx="12"
-                    ry="5"
-                    transform="rotate(35 16 16)"
-                    stroke="#60A5FA"
-                    strokeWidth="1.8"
-                  />
-                  <circle cx="16" cy="16" r="3.2" fill="#FFFFFF" />
-                </svg>
+              <div className="w-10 h-10 relative flex items-center justify-center rounded-full bg-white p-1 shadow-md border border-slate-700/60">
+                <img
+                  src="/soa-logo.png"
+                  alt="Siksha 'O' Anusandhan (SOA) University Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-extrabold text-white tracking-wider font-sans">
@@ -166,15 +146,6 @@ export function Footer() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-2 pt-1">
-                <Mail className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
-                <div>
-                  <span className="block text-slate-200 font-semibold">Inquiries:</span>
-                  <a href="mailto:allyship@soa.ac.in" className="hover:text-white underline">
-                    allyship@soa.ac.in
-                  </a>
-                </div>
-              </div>
 
               <div className="flex items-start gap-2 pt-1">
                 <Globe className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />

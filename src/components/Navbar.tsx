@@ -3,7 +3,17 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
+import {
+  Menu,
+  X,
+  ArrowRight,
+  Sparkles,
+  Home,
+  Calendar,
+  TrendingUp,
+  Compass,
+  Users,
+} from "lucide-react";
 import { GetInvitedModal } from "./GetInvitedModal";
 
 export function Navbar() {
@@ -16,12 +26,11 @@ export function Navbar() {
   }, [pathname]);
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Event", href: "/event" },
-    { name: "Discover SOA", href: "/discover-soa" },
-    { name: "Collaborate", href: "/collaborate" },
-    { name: "Impact", href: "/impact" },
+    { name: "Home", href: "/", icon: Home },
+    { name: "Event", href: "/event", icon: Calendar },
+    { name: "Impact", href: "/impact", icon: TrendingUp },
+    { name: "Discover", href: "/discover-soa", icon: Compass },
+    { name: "Collaborate", href: "/collaborate", icon: Users },
   ];
 
   const isActive = (href: string) => {
@@ -34,37 +43,18 @@ export function Navbar() {
       <header className="sticky top-0 z-40 w-full bg-[#070d18]/95 backdrop-blur-md border-b border-slate-800/80 text-white transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* Brand Logo matching Reference Image: SOA UNIVERSITY */}
+            {/* Brand Logo with official SOA University Logo */}
             <Link
               href="/"
               className="group flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-xl py-1 px-1.5"
             >
-              {/* SOA University Orbital Emblem */}
-              <div className="w-10 h-10 rounded-full border border-blue-400/40 bg-gradient-to-br from-blue-950 to-slate-900 flex items-center justify-center text-blue-400 shadow-sm group-hover:border-blue-400 transition-colors">
-                <svg viewBox="0 0 32 32" fill="none" className="w-6 h-6">
-                  {/* Orbiting rings */}
-                  <ellipse
-                    cx="16"
-                    cy="16"
-                    rx="12"
-                    ry="5"
-                    transform="rotate(-25 16 16)"
-                    stroke="#3B82F6"
-                    strokeWidth="1.8"
-                    strokeDasharray="2 1.5"
-                  />
-                  <ellipse
-                    cx="16"
-                    cy="16"
-                    rx="12"
-                    ry="5"
-                    transform="rotate(35 16 16)"
-                    stroke="#60A5FA"
-                    strokeWidth="1.8"
-                  />
-                  {/* Core hub */}
-                  <circle cx="16" cy="16" r="3.2" fill="#FFFFFF" />
-                </svg>
+              {/* SOA University Official Emblem */}
+              <div className="w-11 h-11 relative flex items-center justify-center rounded-full bg-white p-1 shadow-md shadow-blue-500/10 border border-slate-700/60 group-hover:border-blue-400/60 transition-all">
+                <img
+                  src="/soa-logo.png"
+                  alt="Siksha 'O' Anusandhan (SOA) University Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
 
               <div className="flex flex-col">
@@ -82,23 +72,31 @@ export function Navbar() {
               </div>
             </Link>
 
-            {/* Desktop Navigation Links in EXACT required order */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+            {/* Desktop Navigation Links — Fancy Floating Capsule Dock */}
+            <nav className="hidden lg:flex items-center p-1.5 rounded-full bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 shadow-xl shadow-black/40 gap-1">
               {navLinks.map((link) => {
                 const active = isActive(link.href);
+                const Icon = link.icon;
                 return (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`text-xs font-semibold tracking-wide transition-colors relative py-1 ${
+                    className={`relative flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 group ${
                       active
-                        ? "text-blue-400 font-bold"
-                        : "text-slate-300 hover:text-white"
+                        ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 text-white font-bold shadow-lg shadow-blue-500/35 border border-blue-400/50 scale-[1.03]"
+                        : "text-slate-300 hover:text-white hover:bg-white/10 hover:border-slate-700/60 border border-transparent"
                     }`}
                   >
+                    <Icon
+                      className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                        active
+                          ? "text-cyan-300 scale-110"
+                          : "text-slate-400 group-hover:text-cyan-300 group-hover:scale-110"
+                      }`}
+                    />
                     <span>{link.name}</span>
                     {active && (
-                      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-blue-500 rounded-full" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_#67e8f9] animate-pulse" />
                     )}
                   </Link>
                 );
@@ -110,8 +108,9 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => setIsInviteOpen(true)}
-                className="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold tracking-wide shadow-md shadow-blue-600/30 hover:shadow-blue-600/40 transition-all flex items-center gap-2"
+                className="relative group overflow-hidden px-5 py-2.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold tracking-wide shadow-md shadow-blue-600/30 hover:shadow-blue-500/50 hover:scale-105 transition-all flex items-center gap-2 border border-blue-400/30"
               >
+                <Sparkles className="w-3.5 h-3.5 text-cyan-300 animate-pulse" />
                 <span>Get Invited</span>
               </button>
             </div>
@@ -121,7 +120,7 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => setIsInviteOpen(true)}
-                className="px-3.5 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-bold"
+                className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold shadow-md shadow-blue-600/30"
               >
                 Get Invited
               </button>
@@ -142,22 +141,38 @@ export function Navbar() {
         {/* Mobile Navigation Drawer */}
         {isMobileMenuOpen && (
           <div className="lg:hidden border-t border-slate-800 bg-[#070d18]/98 backdrop-blur-2xl animate-in slide-in-from-top-4 duration-200">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-3">
-              <div className="grid grid-cols-1 gap-1">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-4">
+              <div className="grid grid-cols-1 gap-2">
                 {navLinks.map((link) => {
                   const active = isActive(link.href);
+                  const Icon = link.icon;
                   return (
                     <Link
                       key={link.name}
                       href={link.href}
-                      className={`px-4 py-3 rounded-xl text-sm font-semibold flex items-center justify-between transition-colors ${
+                      className={`px-4 py-3 rounded-2xl text-sm font-semibold flex items-center justify-between transition-all duration-200 ${
                         active
-                          ? "bg-blue-950/60 text-blue-400 font-bold border border-blue-800/40"
-                          : "text-slate-300 hover:bg-slate-900"
+                          ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 text-white font-bold shadow-lg shadow-blue-600/30 border border-blue-400/40"
+                          : "text-slate-300 hover:bg-slate-900/80 hover:text-white border border-slate-800/60"
                       }`}
                     >
-                      <span>{link.name}</span>
-                      <ArrowRight className="w-4 h-4 text-slate-500" />
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`w-8 h-8 rounded-xl flex items-center justify-center ${
+                            active
+                              ? "bg-white/20 text-white"
+                              : "bg-slate-800 text-slate-400"
+                          }`}
+                        >
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <span>{link.name}</span>
+                      </div>
+                      <ArrowRight
+                        className={`w-4 h-4 ${
+                          active ? "text-cyan-300" : "text-slate-500"
+                        }`}
+                      />
                     </Link>
                   );
                 })}
@@ -170,9 +185,9 @@ export function Navbar() {
                     setIsMobileMenuOpen(false);
                     setIsInviteOpen(true);
                   }}
-                  className="w-full py-3 rounded-xl bg-blue-600 text-white text-sm font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30"
+                  className="w-full py-3 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 text-white text-sm font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30"
                 >
-                  <Sparkles className="w-4 h-4" />
+                  <Sparkles className="w-4 h-4 text-cyan-300" />
                   <span>Request Invitation (Get Invited)</span>
                 </button>
               </div>

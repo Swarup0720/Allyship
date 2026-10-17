@@ -41,8 +41,8 @@ export default function ImpactPage() {
     {
       title: "Gen-Z Leadership & HR Policy Adoption",
       badge: "Workplace Cultural Reform",
-      desc: "Over 400 participating CHROs, VPs, and talent leaders across six conclaves have co-developed actionable playbooks on psychological safety, Upstander/Sponsor allyship roles, and empathetic Gen-Z onboarding for hybrid corporate environments.",
-      metric: "400+ Executives Engaged",
+      desc: "Over 500 participating CHROs, VPs, and talent leaders across six conclaves have co-developed actionable playbooks on psychological safety, Upstander/Sponsor allyship roles, and empathetic Gen-Z onboarding for hybrid corporate environments.",
+      metric: "500+ Executives Engaged",
     },
   ];
 
@@ -57,7 +57,7 @@ export default function ImpactPage() {
       summary: "Detailed coverage of the Hyderabad chapter headlined by former Indian international cricketer Arshad Ayub, CXO leaders from UPS, Human Edge, and CSIR scientists deliberating collaborative leadership and industry-academia cooperation.",
       quote: "SOA convenes corporate leadership to bridge the gap between academic research and business transformation.",
       link: "https://www.deccanchronicle.com/southern-states/allyship-conclave-focuses-on-leadership-and-collaboration-1812653",
-      image: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=600&q=80",
+      image: "/news-deccan-hyd.jpg",
     },
     {
       id: "statesman-techm",
@@ -65,10 +65,10 @@ export default function ImpactPage() {
       title: "Odisha: SOA Ties Up with Tech Mahindra to Boost Industry-Ready Skills",
       date: "July 2026 · Bhubaneswar",
       category: "Centre of Excellence",
-      summary: "Reporting on the inauguration of the Tech Mahindra Centre of Excellence at ITER campus by VC Prof. Pradipta Kumar Nanda and Tech Mahindra's Dharmaraj Nayak to train engineers in ServiceNow, AI/ML, and Cloud architecture.",
+      summary: "Reporting on the inauguration of the Tech Mahindra Centre of Excellence at ITER campus under the stewardship of Founder President & Chairman Prof. (Dr.) Manojranjan Nayak and Tech Mahindra's Dharmaraj Nayak to train engineers in ServiceNow, AI/ML, and Cloud architecture.",
       quote: "A pioneering milestone accelerating hands-on enterprise competency directly within university laboratories.",
       link: "https://www.thestatesman.com/business/odisha-soa-ties-up-with-tech-mahindra-to-boost-industry-ready-skills-1503616250.html",
-      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
+      image: "/soa-iter-building.jpg",
     },
     {
       id: "prameya-genz",
@@ -79,7 +79,7 @@ export default function ImpactPage() {
       summary: "Focusing on the 2.0 cycle launch at Le Meridien, Gachibowli, featuring AFI Secretary Dr. G. Srinivas Patnaik, IIT Delhi's Prof. Sanjay Dhir, and HR heads from Akamai, Reckitt, and NCC Ltd on psychological safety and learning agility.",
       quote: "Modern enterprises must adapt to Gen-Z aspirations through intentional, daily mentorship.",
       link: "https://www.prameyanews.com/soa-organises-allyship-20-with-focus-on-gen-z-aspirations-at-hyderabad",
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80",
+      image: "/news-prameya-genz.webp",
     },
     {
       id: "bytes-blr",
@@ -90,7 +90,7 @@ export default function ImpactPage() {
       summary: "Reporting on the inaugural conclave in Bengaluru with top executives from Microsoft, Dell, Zscaler, BNY Mellon, and an inspiring virtual keynote by Olympian Anju Bobby George on leadership in sports.",
       quote: "Over 70 corporate stalwarts gathered in Bengaluru to initiate a transformative dialogue with SOA University.",
       link: "https://odishabytes.com/70-corporate-leaders-attend-soas-allyship-event-at-bengaluru/",
-      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80",
+      image: "/news-bytes-blr.jpg",
     },
     {
       id: "prameya-mumbai",
@@ -98,10 +98,10 @@ export default function ImpactPage() {
       title: "Nilesh Kulkarni Addresses SOA's Allyship Conclave at Mumbai",
       date: "October 2025 · Mumbai",
       category: "Conclave Coverage",
-      summary: "Former Indian Test cricketer Nilesh Kulkarni and Olympian Anand Menezes joined VC Prof. Pradipta Kumar Nanda and LTTS Global Head Dr. P.B. Kotur in Mumbai to examine employee well-being and high-performance discipline.",
+      summary: "Former Indian Test cricketer Nilesh Kulkarni and Olympian Anand Menezes joined Chairman Prof. (Dr.) Manojranjan Nayak and LTTS Global Head Dr. P.B. Kotur in Mumbai to examine employee well-being and high-performance discipline.",
       quote: "Connecting the resilience of international sport with executive well-being and boardroom empathy.",
       link: "https://www.prameyanews.com/nilesh-kulkarni-addresses-soas-allyship-conclave-at-mumbai",
-      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80",
+      image: "/news-prameya-mumbai.webp",
     },
     {
       id: "update-lseg",
@@ -112,7 +112,7 @@ export default function ImpactPage() {
       summary: "London Stock Exchange Group (LSEG) selected 11 B.Tech and MCA students from SOA following a rigorous six-round recruitment drive—representing the largest cohort recruited by LSEG from any single campus in India.",
       quote: "A testament to the global competitiveness of SOA's technical curriculum and student caliber.",
       link: "https://updateodisha.com/2025/09/13/first-time-in-odisha-lseg-hires-11-soa-students-87858/",
-      image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80",
+      image: "/news-update-lseg.jpg",
     },
     {
       id: "sakala-kolkata",
@@ -123,7 +123,7 @@ export default function ImpactPage() {
       summary: "1964 Olympic hockey gold medalist Gurbux Singh, footballer Gautam Sarkar, and Dhoni's mentor Satyaprakash Krishna joined PwC, Lexmark, and Fortune 500 DEI advisors to deliberate digital transformation and workplace inclusion.",
       quote: "Honoring India's greatest athletic icons while laying the roadmap for modern inclusive workplaces.",
       link: "https://www.soa.ac.in/general-notifications/2024/9/30/soa-organises-allyship-conclave-at-kolkata",
-      image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80",
+      image: "/CON01638.JPG",
     },
     {
       id: "around-chennai",
@@ -134,7 +134,7 @@ export default function ImpactPage() {
       summary: "Paris Olympics sprint coach Premanand J. and Standard Chartered Global Head Archana Grover led deliberations with 60+ talent heads from Rocket India, Foodhub, Nordex, KaarTech, and Mphasis on allyship as everyday leadership.",
       quote: "Allyship is not an optional HR policy—it is a daily leadership responsibility that unlocks sustainable innovation.",
       link: "https://www.soa.ac.in/general-notifications/2026/8/7/soa-university-hosts-allyship-20-at-chennai",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80",
+      image: "/news-around-chennai.jpg",
     },
     {
       id: "sanchar-nirf",
@@ -145,7 +145,7 @@ export default function ImpactPage() {
       summary: "Ministry of Education announces NIRF 2025: SOA ranks 15th nationally in the University category with score of 63.14. ITER engineering ascends to 22nd and Medical surges to 15th in India.",
       quote: "Reinforcing SOA's stature as a multidisciplinary powerhouse and the #1 university in Odisha.",
       link: "https://www.soa.ac.in/general-notifications/2025/9/4/soa-ranked-15th-in-country-in-2025-nirf-rankings-climbs-up-the-ladder-in-medical-sciences-and-engineering",
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80",
+      image: "/soa-campus-aerial.jpg",
     },
   ];
 
@@ -184,11 +184,11 @@ export default function ImpactPage() {
           </div>
 
           <div className="lg:col-span-5 relative flex justify-center">
-            <div className="relative w-full max-w-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-900">
+            <div className="relative w-full max-w-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-900 group">
               <img
-                src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=1000&q=80"
-                alt="Corporate Leaders Handshake Collaboration"
-                className="w-full h-72 object-cover"
+                src="/IMG_7873.jpg"
+                alt="Allyship++ National Conclave Live Delegation and Leadership"
+                className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-end p-5">
                 <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider">
@@ -326,6 +326,13 @@ export default function ImpactPage() {
             </div>
 
             <div className="space-y-4">
+              <div className="h-52 sm:h-64 w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-inner">
+                <img
+                  src={selectedClipping.image}
+                  alt={selectedClipping.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <blockquote className="text-sm text-slate-800 italic border-l-4 border-blue-600 pl-4 py-1 bg-slate-50 rounded-r-xl">
                 “{selectedClipping.quote}”
               </blockquote>

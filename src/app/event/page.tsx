@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   Calendar,
   Clock,
@@ -16,201 +17,66 @@ import {
   Medal,
   ExternalLink,
   ChevronRight,
+  ShieldCheck,
 } from "lucide-react";
 import { GetInvitedModal } from "@/components/GetInvitedModal";
+import { conclavesData } from "@/data/conclaves";
 
-export default function EventPage() {
+const eventHeroImages = [
+  {
+    src: "/IMG_7492.jpg",
+    title: "Hyderabad Chapter Ballroom & Delegates",
+    subtitle: "Strategic Industry-Academia Leadership Conclave",
+  },
+  {
+    src: "/CON01670.JPG",
+    title: "Chennai Chapter 2.0 Delegation Group",
+    subtitle: "Senior HR Directors, CHROs & Corporate Partners",
+  },
+  {
+    src: "/CON01638.JPG",
+    title: "Chennai Chapter 2.0 Keynote & Stage Dignitaries",
+    subtitle: "Panels on Practicing Allyship & Talent Readiness",
+  },
+];
+
+function EventContent() {
+  const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState<"Chapters" | "Speakers" | "Themes" | "Videos">("Chapters");
   const [selectedChapter, setSelectedChapter] = useState(0);
   const [isInviteOpen, setIsInviteOpen] = useState(false);
   const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null);
+  const [heroSlide, setHeroSlide] = useState(0);
 
-  const conclaves = [
-    {
-      id: "bengaluru-1",
-      city: "Bengaluru",
-      edition: "Allyship++ 1.0 — 1st Edition",
-      date: "June 2024",
-      venue: "Bengaluru Metropolitan Hub",
-      turnout: "~70 Corporate Leaders (incl. Microsoft, Dell, Zscaler)",
-      title: "Leadership and Collaboration Across Disciplines",
-      desc: "SOA Vice-Chancellor Prof. Pradipta Kumar Nanda delivered the inaugural address on collaborative leadership, followed by an inspiring virtual keynote on ‘Leadership in Sports’ by Olympian and World Championship medalist Anju Bobby George. Senior leaders from Microsoft, Dell, Zscaler, and major global capability centres deliberated on engineering cultures, tech-worker burnout, and hybrid global teams.",
-      sportsGuests: [
-        { name: "Anju Bobby George", role: "Olympian & First Indian World Athletics Championship Medalist", note: "Virtual Keynote on 'Leadership in Sports'" },
-      ],
-      leadership: [
-        { name: "Prof. Pradipta Kumar Nanda", role: "Vice-Chancellor, SOA University (Inaugural Address)" },
-        { name: "Prof. (Dr.) Raj Kumar Hota", role: "Dean, Corporate Relations and Placement, SOA (Convener)" },
-      ],
-      moderators: [
-        { name: "Rajeev Kumar Singh", role: "Chief Strategist, Open Link Foundation" },
-      ],
-      panelists: [
-        { name: "Dr. P.B. Kotur", role: "Global Head, Engineering Academy, L&T Technology Services" },
-        { name: "C. Aparna", role: "CHRO, Torry Harris Integration Solutions" },
-        { name: "Baliram Mutagekar", role: "Vice President, BNY Mellon" },
-        { name: "Dr. S.J. Naganagouda", role: "Chief People Officer, Tally Solutions Pvt Ltd" },
-        { name: "Arun Parija", role: "Partner, Coserve Software Solutions" },
-      ],
-      focus: "Engineering cultures, mitigating tech-worker burnout, hybrid global teams, and cross-disciplinary leadership.",
-      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      id: "hyderabad-1",
-      city: "Hyderabad (1.0)",
-      edition: "Allyship++ 1.0 — 2nd Edition",
-      date: "July 26, 2024",
-      venue: "Hyderabad Tech Corridor",
-      turnout: "60+ Corporate Leaders & HR Professionals",
-      title: "Practicing Allyship at the Organizational Level",
-      desc: "Former Indian Test cricketer Arshad Ayub joined as Chief Guest to highlight leadership and collaboration in dynamic business environments. Convened by Prof. (Dr.) Raj Kumar Hota alongside Prof. P.K. Patra (Dean, Sponsored Research and Industry Consultancy), CXO advisors, engineering VPs, and CSIR scientists examined how to practice allyship in both professional and personal spheres while accelerating industry-academia R&D.",
-      sportsGuests: [
-        { name: "Arshad Ayub", role: "Former Indian International Cricketer (Test & ODI)", note: "Chief Guest on Leadership & Collaboration in Dynamic Environments" },
-      ],
-      leadership: [
-        { name: "Prof. (Dr.) Raj Kumar Hota", role: "Dean, Placement, Career Development & Industry Collaboration, SOA (Convener)" },
-        { name: "Dr. P.K. Patra", role: "Dean, Sponsored Research & Industry Consultancy, SOA" },
-      ],
-      moderators: [
-        { name: "Collective CXO & Scientific Roundtable", role: "Strategic High-Level Deliberation Format" },
-      ],
-      panelists: [
-        { name: "Rohit Adlakha", role: "CXO Advisor, Human Edge (Enterprises)" },
-        { name: "Lavanam Amballa", role: "Talent Acquisition Strategist, Integraminds" },
-        { name: "Pushkala Balasubramanian", role: "Vice-President (Engineering), Kloudgin" },
-        { name: "Kiranmal Pendyala", role: "Former Strategic Thought Leader, UPS" },
-        { name: "Dr. Umesh Udayaprakash", role: "Group Vice-President, Innova" },
-        { name: "Dr. Bapuji Maringanti", role: "Scientist, CSIR" },
-      ],
-      focus: "Practicing allyship at both organizational and personal levels; closer academic-corporate R&D cooperation.",
-      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      id: "kolkata-1",
-      city: "Kolkata",
-      edition: "Allyship++ 1.0 — 3rd Edition",
-      date: "September 27, 2024",
-      venue: "Kolkata City Hub",
-      turnout: "Dual-Panel Conclave & Sports Legends Tribute",
-      title: "Bridging Legacy Business, Digital Transformation & DEI",
-      desc: "Featuring two powerhouse industry panels spanning cloud consulting, fintech, telecom, and Fortune 500 DEI advisory, the Kolkata chapter also celebrated sporting greatness with 1964 Olympic hockey gold medalist Gurbux Singh, football legend Gautam Sarkar (‘Indian Beckenbauer’), and Satyaprakash Krishna (mentor to M.S. Dhoni), alongside senior IAS officer and SOA alumnus Smruti Ranjan Mohanty.",
-      sportsGuests: [
-        { name: "Gurbux Singh", role: "1964 Olympic Hockey Gold Medalist", note: "Sports Legend Tribute" },
-        { name: "Gautam Sarkar", role: "Former Indian Footballer ('Indian Beckenbauer')", note: "Sports Legend Tribute" },
-        { name: "Satyaprakash Krishna", role: "Mentor to Former Indian Cricket Captain M.S. Dhoni", note: "Sponsorship & Grassroots Talent Identification" },
-        { name: "Smruti Ranjan Mohanty, IAS", role: "Director of Fisheries & MD of SFDC, Govt. of West Bengal (SOA Alumnus)", note: "Distinguished Public Sector Guest" },
-      ],
-      leadership: [
-        { name: "Prof. (Dr.) Raj Kumar Hota", role: "Dean, Corporate Relations and Placement, SOA (Convener)" },
-        { name: "Dr. P.K. Patra", role: "Dean, Sponsored Research & Industry Consultancy, SOA" },
-        { name: "Ms. Kajal Panda", role: "Deputy Director, Corporate Relations, SOA" },
-      ],
-      moderators: [
-        { name: "Pradip Bandyopadhyay", role: "Moderator, Panel Two" },
-      ],
-      panelists: [
-        { name: "Brishti Mondal", role: "Vice-President, NRI FinTech" },
-        { name: "Rashmita Parija", role: "Country HR Manager, Lexmark India" },
-        { name: "Sumit Agarwal", role: "DEI Advisor to Fortune 500 Companies" },
-        { name: "Nadeem Kazim", role: "CEO and Founder, Splice HR Works" },
-        { name: "Sudipto Ray", role: "Managing Director – Cloud and Digital, PwC" },
-        { name: "Amrita Das Gupta", role: "Swayam" },
-        { name: "Tumpa Sarkar", role: "President, WICCI" },
-        { name: "Debalina Roy", role: "Vodafone" },
-        { name: "Saurabh Roy", role: "Deputy General Manager, Reliance Jio Infocom" },
-      ],
-      focus: "Bridging legacy business and digital transformation, Fortune 500 DEI advisory, and supportive workplace environments.",
-      image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      id: "mumbai-1",
-      city: "Mumbai",
-      edition: "Allyship++ 1.0 — 4th Edition",
-      date: "October 2025",
-      venue: "Mumbai Financial Capital",
-      turnout: "~60 Senior Leaders & HR Executives",
-      title: "Building Inclusive and Empowered Workplaces",
-      desc: "Following an inaugural address on community and leadership by SOA Vice-Chancellor Prof. Pradipta Kumar Nanda, former Indian Test cricketer Nilesh Kulkarni led a fireside conversation on resilience and the evolving landscape of sports and education, joined by Olympian Anand Menezes. Dr. P.B. Kotur moderated a dynamic panel on balancing quarterly growth with employee well-being and psychological safety for junior analysts.",
-      sportsGuests: [
-        { name: "Nilesh Kulkarni", role: "Former Indian Test Cricketer", note: "Fireside Chat on Leadership, Resilience & Sports Education" },
-        { name: "Anand Menezes", role: "Olympian & Senior Consultant, Athletics Federation of India", note: "Keynote on High Performance & Discipline" },
-      ],
-      leadership: [
-        { name: "Prof. Pradipta Kumar Nanda", role: "Vice-Chancellor, SOA University (Inaugural Speech)" },
-        { name: "Prof. (Dr.) Raj Kumar Hota", role: "Dean, Corporate Relations and Placement, SOA (Convener)" },
-        { name: "Ms. Kajal Panda", role: "Deputy Director, L&D, SOA (Vote of Thanks)" },
-      ],
-      moderators: [
-        { name: "Dr. P.B. Kotur", role: "Author, Motivational Speaker and Corporate Executive" },
-      ],
-      panelists: [
-        { name: "Dr. Brillian S.K.", role: "EVP and Head of HR, Times Professional Learning" },
-        { name: "Dr. Meenakshi Banerjee", role: "VP, People and Development, Business Next" },
-        { name: "Swapnakant Samal", role: "Head of Talent and Transformation, Protiviti" },
-        { name: "Gauri Das", role: "SVP and Head of HR, India Factoring and Finance Solutions Pvt Ltd" },
-      ],
-      focus: "Allyship: Building Inclusive and Empowered Workplaces; balancing quarterly growth with employee well-being and psychological safety.",
-      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      id: "hyderabad-2",
-      city: "Hyderabad (2.0)",
-      edition: "Allyship++ 2.0 — 1st Edition of 2.0",
-      date: "May 15, 2026",
-      venue: "Le Meridien, Gachibowli, Hyderabad",
-      turnout: "Regional CXOs, Capability Heads & IIT Faculty",
-      title: "Practicing Allyship in Gen-Z Leadership",
-      desc: "Launching the 2.0 cycle, this conclave explored workforce transformation, psychological safety, learning agility, and the campus-to-corporate transition for Gen-Z professionals. Dr. G. Srinivas Patnaik (Secretary, Athletics Federation of India) shared insights on discipline, trust, and mentorship in nurturing young talent, while SOA Pro-Vice Chancellor Prof. Prasanta Kumar Patra highlighted institutional research milestones.",
-      sportsGuests: [
-        { name: "Dr. G. Srinivas Patnaik", role: "Secretary, Athletics Federation of India", note: "Fireside Chat on Discipline, Mentorship, Trust & Resilience in Young Talent" },
-      ],
-      leadership: [
-        { name: "Prof. Prasanta Kumar Patra", role: "Pro-Vice Chancellor, SOA University (Institutional Address)" },
-        { name: "Prof. (Dr.) Raj Kumar Hota", role: "Dean, Corporate Relations and Placement, SOA (Convener)" },
-        { name: "Ms. Kajal Panda", role: "Deputy Director, Corporate Relations, SOA (Vote of Thanks)" },
-      ],
-      moderators: [
-        { name: "Prof. Sanjay Dhir", role: "Professor, IIT Delhi" },
-      ],
-      panelists: [
-        { name: "Rachita Mahadev", role: "Emerging Talent Lead – India and APJ, Akamai Technologies" },
-        { name: "Bikram K. Nayak", role: "Vice President – Human Resources, NCC Ltd" },
-        { name: "Dr. Reena Das", role: "Chief Human Resource Officer, Keolis Hyderabad" },
-        { name: "Ishadarshi P. Mishra", role: "Head of HR – Global Hub, Reckitt" },
-      ],
-      focus: "Practicing Allyship in Gen-Z Leadership; learning agility, campus-to-corporate transition, and empathetic leadership models.",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      id: "chennai-2",
-      city: "Chennai (2.0)",
-      edition: "Allyship++ 2.0 — 2nd Edition of 2.0",
-      date: "July 31, 2026",
-      venue: "Chennai Executive Hub",
-      turnout: "60+ Industry Leaders, HR Heads & Academicians",
-      title: "Practicing Allyship as a Leadership Responsibility",
-      desc: "Featuring a fireside chat with high-performance athletics coach and former international sprinter Premanand J. (who trained the Indian national sprint team for the Paris Olympics) on discipline and mentorship, followed by a panel moderated by Standard Chartered’s Global Head Archana Grover. Panelists declared that allyship is not merely an initiative, but a core leadership responsibility driving innovation, trust, and sustainable success.",
-      sportsGuests: [
-        { name: "Premanand J.", role: "Paris Olympics National Sprint Coach & Former International Sprinter", note: "Fireside Chat on Discipline, High Performance & Mentorship" },
-      ],
-      leadership: [
-        { name: "Prof. Pradipta Kumar Nanda", role: "Vice-Chancellor, SOA University (Address on Future-Ready Workplaces)" },
-        { name: "Prof. (Dr.) Raj Kumar Hota", role: "Dean, Corporate Relations and Placement, SOA (Convener)" },
-      ],
-      moderators: [
-        { name: "Archana Grover", role: "Global Head – Capabilities, Transformation and Culture, Standard Chartered" },
-      ],
-      panelists: [
-        { name: "Suganya Veeraraghavan", role: "Assistant Vice-President, Rocket India" },
-        { name: "Suresh Aade", role: "Head of Human Resources, Foodhub" },
-        { name: "Archana Mukunthan", role: "Senior Manager, Nordex Group" },
-        { name: "R.K. Ramachandran", role: "Global Talent Head, KaarTech" },
-        { name: "M.D. Joshua David", role: "India Campus Head, Mphasis" },
-      ],
-      focus: "Practicing Allyship; embedding allyship into everyday culture as a leadership responsibility driving innovation, trust, and sustainable success.",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
-    },
-  ];
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroSlide((prev) => (prev + 1) % eventHeroImages.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const conclaves = conclavesData;
+
+  useEffect(() => {
+    const chapterParam = searchParams.get("chapter");
+    if (chapterParam) {
+      const idx = conclaves.findIndex(
+        (c) =>
+          c.id.toLowerCase() === chapterParam.toLowerCase() ||
+          c.city.toLowerCase().includes(chapterParam.toLowerCase())
+      );
+      if (idx !== -1) {
+        setSelectedChapter(idx);
+        setActiveTab("Chapters");
+        const el = document.getElementById("chapter-details");
+        if (el) {
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: "smooth" });
+          }, 100);
+        }
+      }
+    }
+  }, [searchParams, conclaves]);
 
   const videos = [
     {
@@ -237,10 +103,50 @@ export default function EventPage() {
 
   return (
     <div className="flex flex-col w-full bg-[#f8fafc] text-slate-900 pb-20">
-      {/* 1. Dark Photographic Hero Section */}
-      <section className="relative bg-[#070d18] text-white pt-12 sm:pt-16 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-7 space-y-5">
+      {/* 1. Dark Photographic Hero Section with Automatic Sliding Background */}
+      <section className="relative bg-[#070d18] text-white pt-12 sm:pt-16 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800 overflow-hidden">
+        {/* Sliding Background Gallery */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div
+            className="flex h-full w-full transition-transform duration-1000 ease-in-out"
+            style={{ transform: `translateX(-${heroSlide * 100}%)` }}
+          >
+            {eventHeroImages.map((slide) => (
+              <div
+                key={slide.src}
+                className="w-full h-full flex-shrink-0 bg-cover bg-center"
+                style={{ backgroundImage: `url('${slide.src}')` }}
+              />
+            ))}
+          </div>
+          {/* Light translucent overlay: ensures conclave photos are 100% bright, vibrant & clearly visible */}
+          <div className="absolute inset-0 bg-slate-950/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/50 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-black/10 pointer-events-none" />
+        </div>
+
+        {/* Slide Indicator Dots & Quick Caption */}
+        <div className="absolute bottom-4 left-4 sm:left-8 z-10 flex items-center gap-3 bg-slate-950/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-slate-700/60 shadow-lg">
+          <div className="flex items-center gap-1.5">
+            {eventHeroImages.map((slide, i) => (
+              <button
+                key={slide.src}
+                type="button"
+                onClick={() => setHeroSlide(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === heroSlide ? "w-6 bg-cyan-400" : "w-1.5 bg-white/40 hover:bg-white/80"
+                }`}
+              />
+            ))}
+          </div>
+          <span className="hidden sm:inline-block text-[11px] font-mono text-slate-300 border-l border-slate-700 pl-3">
+            {eventHeroImages[heroSlide].title}
+          </span>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-7 space-y-5 bg-slate-950/40 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-white/10 shadow-2xl">
             <div className="inline-block">
               <span className="px-3.5 py-1.5 rounded-full border border-blue-500/30 bg-blue-950/60 text-blue-400 text-[11px] font-mono font-bold tracking-widest uppercase">
                 Master Conclave Series · 2024–2026
@@ -256,7 +162,7 @@ export default function EventPage() {
             </p>
 
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
-              From Bengaluru and Hyderabad to Kolkata, Mumbai, and Chennai, Siksha ‘O’ Anusandhan has built a continuous national bridge connecting over 400 corporate CXOs, Olympic medalists, and academic leaders.
+              From Bengaluru and Hyderabad to Kolkata, Mumbai, and Chennai, Siksha ‘O’ Anusandhan has built a continuous national bridge connecting over 500 corporate CXOs, Olympic medalists, and academic leaders.
             </p>
 
             <div className="pt-2">
@@ -274,8 +180,8 @@ export default function EventPage() {
           <div className="lg:col-span-5 relative flex justify-center">
             <div className="relative w-full max-w-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-900">
               <img
-                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=80"
-                alt="Allyship++ National Conclave Main Stage"
+                src="/CON01670.JPG"
+                alt="Allyship++ National Conclave Live Delegation"
                 className="w-full h-72 object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-end p-5">
@@ -291,7 +197,236 @@ export default function EventPage() {
         </div>
       </section>
 
-      {/* 2. Top-Level Tab Switcher */}
+      {/* 2. WHY ALLYSHIP++? — GENUINE INSTITUTIONAL PHILOSOPHY & MANDATE */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono font-bold tracking-wider uppercase">
+            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+            <span>The Institutional Philosophy & Purpose</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight font-sans">
+            Why Allyship<span className="text-blue-600 font-mono">++</span>?
+          </h2>
+
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            In an era of rapid technological disruption, transactional campus recruitment is no longer enough. Siksha ‘O’ Anusandhan created <strong className="text-slate-900 font-semibold">Allyship++</strong> to move academic leadership directly into corporate boardrooms—co-creating empathetic, resilient, and future-ready talent ecosystems across India.
+          </p>
+        </div>
+
+        {/* 4 Core Genuine Pillars Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Pillar 1 */}
+          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between group">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200/60 flex items-center justify-center text-blue-600 group-hover:scale-105 transition-transform">
+                <Users className="w-6 h-6" />
+              </div>
+
+              <div>
+                <span className="text-[10px] font-mono font-bold text-blue-600 tracking-wider uppercase block">
+                  Beyond The Placement Drive
+                </span>
+                <h3 className="text-lg font-bold text-slate-900 mt-1 group-hover:text-blue-600 transition-colors">
+                  Ending Transactional Hiring
+                </h3>
+              </div>
+
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Conventional universities wait for annual placement seasons. Allyship++ engages Fortune 500 CHROs and Engineering VPs year-round to co-create academic curricula, practical skill benchmarks, and campus labs before students ever graduate.
+              </p>
+            </div>
+
+            <div className="pt-4 mt-4 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-blue-700">
+              <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <span>Curriculum aligned with CXO benchmarks</span>
+            </div>
+          </div>
+
+          {/* Pillar 2 */}
+          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-amber-300 transition-all flex flex-col justify-between group">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200/60 flex items-center justify-center text-amber-600 group-hover:scale-105 transition-transform">
+                <Medal className="w-6 h-6" />
+              </div>
+
+              <div>
+                <span className="text-[10px] font-mono font-bold text-amber-700 tracking-wider uppercase block">
+                  The Athletic Crucible
+                </span>
+                <h3 className="text-lg font-bold text-slate-900 mt-1 group-hover:text-amber-700 transition-colors">
+                  Why Sports Anchors Allyship
+                </h3>
+              </div>
+
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Olympic medalists and national coaches headline our stages because elite sports embodies the purest form of allyship: unconditional coach-athlete trust, grit under pressure, and mental resilience—the exact attributes needed to prevent tech-worker burnout.
+              </p>
+            </div>
+
+            <div className="pt-4 mt-4 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-amber-800">
+              <CheckCircle2 className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+              <span>Mentorship tested under Olympic pressure</span>
+            </div>
+          </div>
+
+          {/* Pillar 3 */}
+          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-cyan-300 transition-all flex flex-col justify-between group">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-cyan-50 border border-cyan-200/60 flex items-center justify-center text-cyan-700 group-hover:scale-105 transition-transform">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+
+              <div>
+                <span className="text-[10px] font-mono font-bold text-cyan-700 tracking-wider uppercase block">
+                  Workplace Cultural Shift
+                </span>
+                <h3 className="text-lg font-bold text-slate-900 mt-1 group-hover:text-cyan-700 transition-colors">
+                  Everyday Duty Over HR Slogans
+                </h3>
+              </div>
+
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Allyship is not a once-a-year compliance checkbox. In our Hyderabad and Chennai conclaves, leaders established that practicing allyship is an everyday managerial duty—creating psychological safety and clear pathways for Gen-Z digital natives.
+              </p>
+            </div>
+
+            <div className="pt-4 mt-4 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-cyan-800">
+              <CheckCircle2 className="w-3.5 h-3.5 text-cyan-600 shrink-0" />
+              <span>Psychological safety in high-stress teams</span>
+            </div>
+          </div>
+
+          {/* Pillar 4 */}
+          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all flex flex-col justify-between group">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-200/60 flex items-center justify-center text-indigo-600 group-hover:scale-105 transition-transform">
+                <Building className="w-6 h-6" />
+              </div>
+
+              <div>
+                <span className="text-[10px] font-mono font-bold text-indigo-600 tracking-wider uppercase block">
+                  Two-Way Enterprise Bridge
+                </span>
+                <h3 className="text-lg font-bold text-slate-900 mt-1 group-hover:text-indigo-600 transition-colors">
+                  Co-Innovation & Living Labs
+                </h3>
+              </div>
+
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Allyship is reciprocal. Industry partners gain direct access to SOA’s NIRF Top-15 research faculty and advanced labs—co-creating enterprise Centres of Excellence (like Tech Mahindra's ServiceNow & AI Labs) and sponsored R&D initiatives.
+              </p>
+            </div>
+
+            <div className="pt-4 mt-4 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-semibold text-indigo-800">
+              <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+              <span>Campus Centres of Excellence established</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Genuine Leadership Vision Callout Box */}
+        <div className="mt-12 bg-gradient-to-br from-[#070d18] via-slate-900 to-blue-950 text-white rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-8 space-y-4">
+              <span className="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase">
+                The Institutional Commitment
+              </span>
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white leading-tight">
+                “We do not wait for industry to knock on our doors; we bring academic rigor directly into corporate boardrooms across India.”
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Allyship++ is our pledge that every SOA graduate enters a modern enterprise where they are actively championed, psychologically protected, and empowered to lead India’s knowledge-driven economy.
+              </p>
+              <div className="pt-2 flex items-center gap-3 text-xs text-slate-400">
+                <span className="font-semibold text-white">Siksha ‘O’ Anusandhan (Deemed to be University)</span>
+                <span>•</span>
+                <span className="text-cyan-400">NIRF Top-15 · NAAC A++</span>
+              </div>
+            </div>
+
+            {/* Quick Impact Numbers */}
+            <div className="lg:col-span-4 grid grid-cols-2 gap-4">
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">500+</div>
+                <div className="text-[11px] text-slate-300 mt-1 font-medium">Corporate CXOs & HR Leaders</div>
+              </div>
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-blue-400 font-mono">6</div>
+                <div className="text-[11px] text-slate-300 mt-1 font-medium">Metropolitan Conclaves</div>
+              </div>
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-amber-400 font-mono">10+</div>
+                <div className="text-[11px] text-slate-300 mt-1 font-medium">Olympic & Sports Icons</div>
+              </div>
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">100%</div>
+                <div className="text-[11px] text-slate-300 mt-1 font-medium">Reciprocal Engagement</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2.5 MESSAGE FROM PROF. (DR.) RAJ KUMAR HOTA — CONVENER, ALLYSHIP++ */}
+      <section className="pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 items-center">
+          {/* Left: Dr. Hota Photograph (IMG_7364.jpg) */}
+          <div className="md:col-span-5 relative h-80 sm:h-96 w-full bg-slate-900">
+            <img
+              src="/IMG_7364.jpg"
+              alt="Prof. (Dr.) Raj Kumar Hota addressing Allyship++ Conclave at podium"
+              className="w-full h-full object-cover object-top"
+            />
+            <div className="absolute top-4 left-4">
+              <span className="px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-sm text-blue-400 text-[10px] font-mono font-bold uppercase tracking-wider border border-slate-700">
+                Conclave Convener
+              </span>
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent md:hidden p-4 flex items-end">
+              <span className="text-white font-bold text-sm">Prof. (Dr.) Raj Kumar Hota</span>
+            </div>
+          </div>
+
+          {/* Right: Message from the Convener */}
+          <div className="md:col-span-7 p-8 sm:p-12 space-y-5">
+            <div className="space-y-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 block">
+                Convener's Perspective
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                Message from Prof. (Dr.) Raj Kumar Hota
+              </h2>
+            </div>
+
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+              As Convener of every Allyship++ chapter across Bengaluru, Hyderabad, Kolkata, Mumbai, and Chennai, Prof. Hota has spearheaded the movement to bridge corporate leadership with academic research and youth development.
+            </p>
+
+            <blockquote className="text-sm sm:text-base text-slate-800 italic leading-relaxed border-l-4 border-blue-600 pl-4 bg-slate-50 py-3 rounded-r-xl">
+              “Allyship is not a transactional corporate gesture; it is the intentional, everyday commitment to guide, mentor, and sponsor young talent. When academia and corporate leadership unite with empathy and athletic grit, we create an environment where every graduate feels trusted, valued, and empowered to excel.”
+            </blockquote>
+
+            {/* Signature & Credentials */}
+            <div className="pt-2 border-t border-slate-100">
+              <div className="font-serif italic text-2xl text-blue-600 font-bold tracking-wider">
+                Raj Kumar Hota
+              </div>
+              <div className="text-sm font-bold text-slate-900 mt-1">
+                Prof. (Dr.) Raj Kumar Hota
+              </div>
+              <div className="text-xs text-slate-500 font-medium">
+                Dean of Corporate Relations and Placement, Career Development and Industry Collaboration, SOA
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Top-Level Tab Switcher */}
       <section className="bg-white border-b border-slate-200 sticky top-20 z-30 px-4 sm:px-6 lg:px-8 shadow-sm">
         <div className="max-w-7xl mx-auto flex items-center gap-3 overflow-x-auto py-2.5">
           {(["Chapters", "Speakers", "Themes", "Videos"] as const).map((t) => (
@@ -318,7 +453,7 @@ export default function EventPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
         {/* TAB 1: ALL 6 CHAPTERS */}
         {activeTab === "Chapters" && (
-          <div className="space-y-8">
+          <div id="chapter-details" className="space-y-8 scroll-mt-28">
             {/* City Selector Buttons */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
               {conclaves.map((c, idx) => (
@@ -651,5 +786,22 @@ export default function EventPage() {
       {/* Global Invitation Modal */}
       <GetInvitedModal isOpen={isInviteOpen} onClose={() => setIsInviteOpen(false)} />
     </div>
+  );
+}
+
+export default function EventPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#070d18] text-white flex items-center justify-center">
+          <div className="flex items-center gap-3 text-sm font-semibold text-slate-300">
+            <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-ping" />
+            <span>Loading Allyship++ Conclave Series...</span>
+          </div>
+        </div>
+      }
+    >
+      <EventContent />
+    </Suspense>
   );
 }

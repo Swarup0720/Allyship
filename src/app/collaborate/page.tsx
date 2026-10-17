@@ -484,12 +484,12 @@ Sent via SOA University Allyship++ Platform (https://www.placements.soa.ac.in)`;
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
             {[
               {
-                name: "Prof. (Dr.) Raj Kumar Hota",
-                role: "Dean, Corporate Relations, Placement, Career Development & Industry Collaboration · Convener, Allyship++",
+                name: "Prof. (Dr.) Manojranjan Nayak",
+                role: "Founder President & Chairman, Siksha 'O' Anusandhan / ITER",
               },
               {
-                name: "Prof. Prasanta Kumar Patra",
-                role: "Pro-Vice Chancellor & Dean, Sponsored Research and Industrial Consultancy",
+                name: "Prof. (Dr.) Raj Kumar Hota",
+                role: "Dean of Corporate Relations and Placement, Career Development and Industry Collaboration, SOA",
               },
               {
                 name: "Mr. Sumit Mitra",
@@ -498,10 +498,6 @@ Sent via SOA University Allyship++ Platform (https://www.placements.soa.ac.in)`;
               {
                 name: "Ms. Kajal Panda",
                 role: "Deputy Director, Corporate Relations & Learning & Development",
-              },
-              {
-                name: "Mr. Pratap Das",
-                role: "Deputy Director, Corporate Relations and Placement",
               },
             ].map((p) => (
               <div key={p.name} className="p-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 space-y-1">
